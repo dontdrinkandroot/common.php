@@ -1,0 +1,22 @@
+language: php
+
+php:
+    - 7.4
+
+addons:
+    sonarcloud:
+        organization: "dontdrinkandroot"
+        token: $SONAR_TOKEN
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+install:
+    - composer install -n --no-progress
+
+script:
+    - vendor/bin/phpunit --coverage-clover=coverage.clover.xml --log-junit log.junit.xml
+
+after_success:
+    - sonar-scanner
