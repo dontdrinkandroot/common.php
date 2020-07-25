@@ -1,7 +1,8 @@
 {
     "name": "dontdrinkandroot/common",
     "type": "library",
-    "license": "Apache-2",
+    "description": "Commonly uses PHP Classes",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "Philip Washington Sorst",
