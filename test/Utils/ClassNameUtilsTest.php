@@ -11,7 +11,13 @@ class ClassNameUtilsTest extends TestCase
 {
     public function testGetShortName()
     {
-        $this->assertEquals('blog_post', ClassNameUtils::getShortName('App\Entity\BlogPost'));
-        $this->assertEquals('user', ClassNameUtils::getShortName('User'));
+        $this->assertEquals('BlogPost', ClassNameUtils::getShortName('App\Entity\BlogPost'));
+        $this->assertEquals('User', ClassNameUtils::getShortName('User'));
+    }
+
+    public function testGetTableizedShortName()
+    {
+        $this->assertEquals('blog_post', ClassNameUtils::getTableizedShortName('App\Entity\BlogPost'));
+        $this->assertEquals('user', ClassNameUtils::getTableizedShortName('User'));
     }
 }

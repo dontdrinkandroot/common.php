@@ -2,16 +2,35 @@
 
 namespace Dontdrinkandroot\Utils;
 
+use RuntimeException;
+
 /**
  * @author Philip Washington Sorst <philip@sorst.net>
  */
 class ClassNameUtils
 {
+    public static function getTableizedShortName(string $className): string
+    {
+        $lastPart = self::getShortName($className);
+
+        $tableizedShortName = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $lastPart);
+
+        if ($tableizedShortName === null) {
+            throw new RuntimeException(
+                sprintf(
+                    'preg_replace returned null for value "%s"',
+                    $lastPart
+                )
+            );
+        }
+
+        return mb_strtolower($tableizedShortName);
+    }
+
     public static function getShortName(string $className): string
     {
         $parts = explode("\\", $className);
-        $lastPart = $parts[count($parts) - 1];
 
-        return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '_$1', $lastPart));
+        return $parts[count($parts) - 1];
     }
 }
