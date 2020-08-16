@@ -19,7 +19,7 @@ class CollectionUtils
     {
         $results = [];
         foreach ($collection as $element) {
-            $results[] = call_user_func($collectFunction, $element);
+            $results[] = $collectFunction($element);
         }
 
         return $results;
