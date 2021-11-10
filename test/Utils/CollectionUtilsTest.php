@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class CollectionUtilsTest extends TestCase
 {
-    public function testCollect()
+    public function testCollect(): void
     {
         $collection = [];
         $collection[] = new SimplePopo('a', 1);
@@ -15,22 +15,18 @@ class CollectionUtilsTest extends TestCase
 
         $result = CollectionUtils::collect(
             $collection,
-            function (SimplePopo $simplePopo) {
-                return $simplePopo->getProperty1();
-            }
+            fn(SimplePopo $simplePopo): string => $simplePopo->getStringProperty()
         );
         $this->assertEquals(['a', 'c', 'b'], $result);
 
         $result = CollectionUtils::collect(
             $collection,
-            function (SimplePopo $simplePopo) {
-                return $simplePopo->getProperty2();
-            }
+            fn(SimplePopo $simplePopo): int => $simplePopo->getIntProperty()
         );
         $this->assertEquals([1, 3, 2], $result);
     }
 
-    public function testCollectProperty()
+    public function testCollectProperty(): void
     {
         $collection = [];
         $collection[] = new SimplePopo('a', 1);

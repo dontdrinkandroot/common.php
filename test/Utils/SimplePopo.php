@@ -3,46 +3,35 @@
 namespace Dontdrinkandroot\Utils;
 
 
-class SimplePopo 
+class SimplePopo
 {
-    public $property1;
+    public string $stringProperty;
 
-    public $property2;
+    public int $intProperty;
 
-    public function __construct($property1 = null, $property2 = null) {
-        $this->property1 = $property1;
-        $this->property2 = $property2;
+    public function __construct(string $property1, int $property2)
+    {
+        $this->stringProperty = $property1;
+        $this->intProperty = $property2;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProperty1()
+    public function getStringProperty(): string
     {
-        return $this->property1;
+        return $this->stringProperty;
     }
 
-    /**
-     * @param mixed $property1
-     */
-    public function setProperty1($property1)
+    public function setStringProperty(string $stringProperty): void
     {
-        $this->property1 = $property1;
+        $this->stringProperty = $stringProperty;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProperty2()
+    public function getIntProperty(): int
     {
-        return $this->property2;
+        return $this->intProperty;
     }
 
-    /**
-     * @param mixed $property2
-     */
-    public function setProperty2($property2)
+    public function setIntProperty(int $intProperty): void
     {
-        $this->property2 = $property2;
+        $this->intProperty = $intProperty;
     }
 }
