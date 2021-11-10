@@ -33,7 +33,7 @@ class CollectionUtilsTest extends TestCase
         $collection[] = new SimplePopo('c', 3);
         $collection[] = new SimplePopo('b', 2);
 
-        $result = CollectionUtils::collectProperty($collection, 'property1');
+        $result = CollectionUtils::collectProperty($collection, 'stringProperty');
         $this->assertEquals(['a', 'c', 'b'], $result);
     }
 }
