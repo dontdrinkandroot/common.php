@@ -2,16 +2,13 @@
 
 namespace Dontdrinkandroot\Crud;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class CrudOperation
 {
-    const LIST = 'LIST';
-    const CREATE = 'CREATE';
-    const READ = 'READ';
-    const UPDATE = 'UPDATE';
-    const DELETE = 'DELETE';
+    public const LIST = 'LIST';
+    public const CREATE = 'CREATE';
+    public const READ = 'READ';
+    public const UPDATE = 'UPDATE';
+    public const DELETE = 'DELETE';
 
     public static function all(): array
     {
