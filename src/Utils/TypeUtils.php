@@ -2,9 +2,6 @@
 
 namespace Dontdrinkandroot\Utils;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class TypeUtils
 {
     /**
@@ -16,9 +13,9 @@ class TypeUtils
      */
     public static function integerOrNull($value): ?int
     {
-        $intVal = intval($value);
+        $intVal = (int)$value;
         if (is_object($value)
-            || strval($intVal) != $value
+            || (string)$intVal != $value
             || is_bool($value)
             || is_null($value)
         ) {
