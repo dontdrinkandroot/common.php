@@ -4,18 +4,15 @@ namespace Dontdrinkandroot\Utils;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class ClassNameUtilsTest extends TestCase
 {
-    public function testGetShortName()
+    public function testGetShortName(): void
     {
         $this->assertEquals('BlogPost', ClassNameUtils::getShortName('App\Entity\BlogPost'));
         $this->assertEquals('User', ClassNameUtils::getShortName('User'));
     }
 
-    public function testGetTableizedShortName()
+    public function testGetTableizedShortName(): void
     {
         $this->assertEquals('blog_post', ClassNameUtils::getTableizedShortName('App\Entity\BlogPost'));
         $this->assertEquals('user', ClassNameUtils::getTableizedShortName('User'));

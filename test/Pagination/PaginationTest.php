@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class PaginationTest extends TestCase
 {
-    public function testInvalid()
+    public function testInvalid(): void
     {
         try {
             new Pagination(-1, 0, 0);
@@ -34,7 +34,7 @@ class PaginationTest extends TestCase
         }
     }
 
-    public function testGetTotalPages()
+    public function testGetTotalPages(): void
     {
         $pagination = new Pagination(1, 1, 0);
         $this->assertEquals(0, $pagination->getTotalPages());
@@ -49,7 +49,7 @@ class PaginationTest extends TestCase
         $this->assertEquals(1, $pagination->getTotalPages());
     }
 
-    public function testGetCurrentPage()
+    public function testGetCurrentPage(): void
     {
         $pagination = new Pagination(1, 2, 3);
         $this->assertEquals(1, $pagination->getCurrentPage());
@@ -58,7 +58,7 @@ class PaginationTest extends TestCase
         $this->assertEquals(42, $pagination->getCurrentPage());
     }
 
-    public function testGetTotal()
+    public function testGetTotal(): void
     {
         $pagination = new Pagination(1, 2, 42);
         $this->assertEquals(42, $pagination->getTotal());

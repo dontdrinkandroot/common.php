@@ -4,12 +4,9 @@ namespace Dontdrinkandroot\Crud;
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class CrudOperationTest extends TestCase
 {
-    public function testAll()
+    public function testAll(): void
     {
         $all = CrudOperation::all();
         $this->assertContains(CrudOperation::LIST, $all);

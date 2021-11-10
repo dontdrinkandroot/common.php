@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 
 class FlexDateTest extends TestCase
 {
-    public function testValidDate()
+    public function testValidDate(): void
     {
         $flexDate = new FlexDate();
         $this->assertFalse($flexDate->isValidDate());
@@ -18,7 +18,7 @@ class FlexDateTest extends TestCase
         $this->assertFalse($flexDate->isValidDate());
     }
 
-    public function testHasValue()
+    public function testHasValue(): void
     {
         $flexDate = new FlexDate();
         $this->assertFalse($flexDate->hasValue());
@@ -27,7 +27,7 @@ class FlexDateTest extends TestCase
         $this->assertTrue($flexDate->hasValue());
     }
 
-    public function testIsCompleteDate()
+    public function testIsCompleteDate(): void
     {
         $flexDate = new FlexDate();
         $this->assertFalse($flexDate->isCompleteDate());
@@ -42,7 +42,7 @@ class FlexDateTest extends TestCase
         $this->assertTrue($flexDate->isCompleteDate());
     }
 
-    public function testToString()
+    public function testToString(): void
     {
         $flexDate = new FlexDate();
         $this->assertEquals('', $flexDate->__toString());
@@ -57,7 +57,7 @@ class FlexDateTest extends TestCase
         $this->assertEquals('2015-03-03', $flexDate->__toString());
     }
 
-    public function testToDateTime()
+    public function testToDateTime(): void
     {
         $flexDate = new FlexDate();
         $dateTime = $flexDate->toDateTime();
@@ -76,7 +76,7 @@ class FlexDateTest extends TestCase
         $this->assertEquals('20150303', $dateTime->format('Ymd'));
     }
 
-    public function testIsValid()
+    public function testIsValid(): void
     {
         $flexDate = new FlexDate();
         $flexDate->setMonth(2);
@@ -87,7 +87,7 @@ class FlexDateTest extends TestCase
         $this->assertFalse($flexDate->isValid());
     }
 
-    public function testFromString()
+    public function testFromString(): void
     {
         $flexDate = FlexDate::fromString('');
         $this->assertNull($flexDate->getYear());
@@ -116,7 +116,7 @@ class FlexDateTest extends TestCase
         $this->assertTrue($flexDate->isValid());
     }
 
-    public function testPrecision()
+    public function testPrecision(): void
     {
         $flexDate = new FlexDate();
         $this->assertEquals(FlexDate::PRECISION_NONE, $flexDate->getPrecision());
