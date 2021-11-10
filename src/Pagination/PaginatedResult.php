@@ -3,14 +3,16 @@
 namespace Dontdrinkandroot\Pagination;
 
 /**
- * @author Philip Washington Sorst <philip@sorst.net>
+ * @template T
  */
 class PaginatedResult
 {
     private Pagination $pagination;
 
+    /** @var array<array-key,T> */
     private array $results;
 
+    /** @param array<array-key,T> $results */
     public function __construct(Pagination $pagination, array $results)
     {
         $this->pagination = $pagination;
@@ -22,6 +24,7 @@ class PaginatedResult
         return $this->pagination;
     }
 
+    /** @return array<array-key,T> */
     public function getResults(): array
     {
         return $this->results;

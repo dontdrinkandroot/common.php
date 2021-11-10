@@ -4,9 +4,6 @@ namespace Dontdrinkandroot\Pagination;
 
 use InvalidArgumentException;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class Pagination
 {
     private int $currentPage;
@@ -46,7 +43,7 @@ class Pagination
 
     public function getTotalPages(): int
     {
-        if ($this->total == 0) {
+        if ($this->total === 0) {
             return 0;
         }
 
