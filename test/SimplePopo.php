@@ -8,10 +8,8 @@ class SimplePopo
 
     public int $intProperty;
 
-    public function __construct(
-        string $property1,
-        int $property2
-    ) {
+    public function __construct(string $property1, int $property2)
+    {
         $this->stringProperty = $property1;
         $this->intProperty = $property2;
     }

@@ -6,15 +6,10 @@ use PHPUnit\Framework\TestCase;
 
 class FlexDateTest extends TestCase
 {
-    public function testValidDate(
-    ): void
+    public function testValidDate(): void
     {
-        $flexDate = new FlexDate(
-        );
-        $this->assertFalse(
-            $flexDate->isValidDate(
-            )
-        );
+        $flexDate = new FlexDate();
+        $this->assertFalse($flexDate->isValidDate());
 
         $flexDate = new FlexDate(2015, 1, 3);
         $this->assertTrue($flexDate->isValidDate());

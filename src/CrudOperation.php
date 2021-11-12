@@ -10,8 +10,7 @@ class CrudOperation
     public const UPDATE = 'UPDATE';
     public const DELETE = 'DELETE';
 
-    public static function all(
-    ): array
+    public static function all(): array
     {
         return [self::LIST, self::CREATE, self::READ, self::UPDATE, self::DELETE];
     }

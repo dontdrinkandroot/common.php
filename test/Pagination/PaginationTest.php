@@ -7,15 +7,10 @@ use PHPUnit\Framework\TestCase;
 
 class PaginationTest extends TestCase
 {
-    public function testInvalid(
-    ): void
+    public function testInvalid(): void
     {
         try {
-            new Pagination(
-                -1,
-                0,
-                0
-            );
+            new Pagination(-1, 0, 0);
             $this->fail("Exception expected");
         } catch (InvalidArgumentException $e) {
             /* Expected */

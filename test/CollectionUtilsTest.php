@@ -6,18 +6,11 @@ use PHPUnit\Framework\TestCase;
 
 class CollectionUtilsTest extends TestCase
 {
-    public function testCollect(
-    ): void
+    public function testCollect(): void
     {
         $collection = [];
-        $collection[] = new SimplePopo(
-            'a',
-            1
-        );
-        $collection[] = new SimplePopo(
-            'c',
-            3
-        );
+        $collection[] = new SimplePopo('a', 1);
+        $collection[] = new SimplePopo('c', 3);
         $collection[] = new SimplePopo('b', 2);
 
         $result = CollectionUtils::collect(

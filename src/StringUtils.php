@@ -8,7 +8,7 @@ class StringUtils
      * Checks if a string starts with another string.
      *
      * @param string $haystack The string to search in.
-     * @param string $needle The string to search.
+     * @param string $needle   The string to search.
      *
      * @return bool
      */
