@@ -12,12 +12,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Dontdrinkandroot\\": "src/"
+            "Dontdrinkandroot\\Common\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dontdrinkandroot\\": "test/"
+            "Dontdrinkandroot\\Common\\": "test/"
         }
     },
     "require": {

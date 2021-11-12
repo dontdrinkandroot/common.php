@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Pagination;
+namespace Dontdrinkandroot\Common\Pagination;
 
 use InvalidArgumentException;
 

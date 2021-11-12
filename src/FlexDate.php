@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Date;
+namespace Dontdrinkandroot\Common;
 
 use DateTime;
 use Exception;

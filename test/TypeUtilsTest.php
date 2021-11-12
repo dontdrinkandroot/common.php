@@ -1,16 +1,29 @@
 <?php
 
-namespace Dontdrinkandroot\Utils;
+namespace Dontdrinkandroot\Common;
 
 use PHPUnit\Framework\TestCase;
 
 class TypeUtilsTest extends TestCase
 {
-    public function testIntegerOrNull(): void
+    public function testIntegerOrNull(
+    ): void
     {
-        $this->assertNull(TypeUtils::integerOrNull(''));
-        $this->assertNull(TypeUtils::integerOrNull('1.2'));
-        $this->assertNull(TypeUtils::integerOrNull('bla'));
+        $this->assertNull(
+            TypeUtils::integerOrNull(
+                ''
+            )
+        );
+        $this->assertNull(
+            TypeUtils::integerOrNull(
+                '1.2'
+            )
+        );
+        $this->assertNull(
+            TypeUtils::integerOrNull(
+                'bla'
+            )
+        );
         $this->assertNull(TypeUtils::integerOrNull(null));
         $this->assertNull(TypeUtils::integerOrNull([]));
         $this->assertNull(TypeUtils::integerOrNull(['b', 'la']));

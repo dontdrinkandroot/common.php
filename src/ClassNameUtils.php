@@ -1,19 +1,23 @@
 <?php
 
-namespace Dontdrinkandroot\Utils;
+namespace Dontdrinkandroot\Common;
 
 use RuntimeException;
 
-/**
- * @author Philip Washington Sorst <philip@sorst.net>
- */
 class ClassNameUtils
 {
-    public static function getTableizedShortName(string $className): string
-    {
-        $lastPart = self::getShortName($className);
+    public static function getTableizedShortName(
+        string $className
+    ): string {
+        $lastPart = self::getShortName(
+            $className
+        );
 
-        $tableizedShortName = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $lastPart);
+        $tableizedShortName = preg_replace(
+            '~(?<=\\w)([A-Z])~u',
+            '_$1',
+            $lastPart
+        );
 
         if ($tableizedShortName === null) {
             throw new RuntimeException(

@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Utils;
+namespace Dontdrinkandroot\Common;
 
 class CollectionUtils
 {
@@ -8,7 +8,7 @@ class CollectionUtils
      * @template T
      * @template R
      *
-     * @param iterable<T>   $collection
+     * @param iterable<T> $collection
      * @param callable(T):R $collectFunction
      *
      * @return list<R>

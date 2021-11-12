@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Pagination;
+namespace Dontdrinkandroot\Common\Pagination;
 
 /**
  * @template T

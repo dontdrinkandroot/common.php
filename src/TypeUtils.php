@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Utils;
+namespace Dontdrinkandroot\Common;
 
 class TypeUtils
 {

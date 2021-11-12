@@ -1,17 +1,33 @@
 <?php
 
 
-namespace Dontdrinkandroot\Utils;
+namespace Dontdrinkandroot\Common;
 
 use PHPUnit\Framework\TestCase;
 
 class StringUtilsTest extends TestCase
 {
-    public function testStartsWith(): void
+    public function testStartsWith(
+    ): void
     {
-        $this->assertTrue(StringUtils::startsWith('bla', ''));
-        $this->assertTrue(StringUtils::startsWith('bla', 'bl'));
-        $this->assertfalse(StringUtils::startsWith('bla', 'la'));
+        $this->assertTrue(
+            StringUtils::startsWith(
+                'bla',
+                ''
+            )
+        );
+        $this->assertTrue(
+            StringUtils::startsWith(
+                'bla',
+                'bl'
+            )
+        );
+        $this->assertfalse(
+            StringUtils::startsWith(
+                'bla',
+                'la'
+            )
+        );
     }
 
     public function testEndsWith(): void
