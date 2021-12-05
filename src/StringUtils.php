@@ -63,4 +63,18 @@ class StringUtils
 
         return $str[$length - 1];
     }
+
+    public static function underscore(
+        string $string,
+        int $case = CASE_LOWER,
+        string $pattern = '/(?<=[a-z0-9])([A-Z])/'
+    ): string {
+        $string = preg_replace($pattern, '_$1', $string);
+
+        if ($case === CASE_UPPER) {
+            return strtoupper($string);
+        }
+
+        return strtolower($string);
+    }
 }
