@@ -45,7 +45,7 @@ class Asserted
     /**
      * @template T of object
      *
-     * @param T               $value
+     * @param mixed           $value
      * @param class-string<T> $class
      *
      * @return T
@@ -62,7 +62,7 @@ class Asserted
     /**
      * @template T of object
      *
-     * @param T|null          $value
+     * @param mixed|null      $value
      * @param class-string<T> $class
      *
      * @return T|null
