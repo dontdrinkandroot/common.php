@@ -31,7 +31,7 @@ class TypeUtils
      *
      * @return int
      */
-    public static function compareNumbers($num1, $num2): ?int
+    public static function compareNumbers($num1, $num2): int
     {
         if ($num1 == $num2) {
             return 0;
