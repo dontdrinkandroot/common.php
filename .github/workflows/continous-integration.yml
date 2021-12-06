@@ -78,7 +78,7 @@ jobs:
                 uses: "ramsey/composer-install@v1"
             -   name: "Install psalm"
                 run: |
-                    wget https://github.com/vimeo/psalm/releases/latest/download/psalm.phar -o /usr/local/bin/psalm \
+                    wget https://github.com/vimeo/psalm/releases/latest/download/psalm.phar -O /usr/local/bin/psalm \
                     && chmod +x /usr/local/bin/psalm
             -   name: "Run psalm"
                 run: "psalm"
