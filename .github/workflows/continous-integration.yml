@@ -10,7 +10,7 @@ env:
 jobs:
     phpunit:
         name: "PHPUnit"
-        runs-on: "ubuntu-20.04"
+        runs-on: "ubuntu-latest"
 
         strategy:
             matrix:
@@ -81,4 +81,3 @@ jobs:
                     && chmod +x /usr/local/bin/psalm
             -   name: "Run psalm"
                 run: "psalm"
-                    
