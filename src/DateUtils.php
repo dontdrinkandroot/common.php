@@ -10,7 +10,7 @@ class DateUtils
     public static function currentMillis(): int
     {
         $microtime = explode(' ', microtime());
-        return ((int)$microtime[1]) * 1000 + ((int)round((int)$microtime[0] * 1000));
+        return ((int)$microtime[1]) * 1000 + ((int)round(((float)$microtime[0]) * 1000));
     }
 
     public static function fromMillis(int $millis): DateTimeInterface
