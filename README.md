@@ -3,7 +3,7 @@ dontdrinkandroot/common
 
 [![Latest Stable Version](http://poser.pugx.org/dontdrinkandroot/common/v)](https://packagist.org/packages/dontdrinkandroot/common)
 [![License](http://poser.pugx.org/dontdrinkandroot/common/license)](https://packagist.org/packages/dontdrinkandroot/common)
-![example workflow](https://github.com/dontdrinkandroot/common.php/actions/workflows/continous-integration.yml/badge.svg)
+![Continuous Integration](https://github.com/dontdrinkandroot/common.php/actions/workflows/continuous-integration.yml/badge.svg)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=dontdrinkandroot_common.php&metric=coverage)](https://sonarcloud.io/summary/new_code?id=dontdrinkandroot_common.php)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=dontdrinkandroot_common.php&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=dontdrinkandroot_common.php)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=dontdrinkandroot_common.php&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=dontdrinkandroot_common.php)
