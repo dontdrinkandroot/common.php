@@ -1,7 +1,7 @@
 {
     "name": "dontdrinkandroot/common",
     "type": "library",
-    "description": "Commonly uses PHP Classes",
+    "description": "Commonly used PHP extensions and helpers",
     "license": "Apache-2.0",
     "authors": [
         {
