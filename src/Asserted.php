@@ -43,6 +43,26 @@ class Asserted
     }
 
     /** @param mixed $value */
+    public static function int($value, ?string $message = null): int
+    {
+        if (!is_int($value)) {
+            throw new InvalidArgumentException($message ?? 'Provided value must be a int');
+        }
+
+        return $value;
+    }
+
+    /** @param mixed $value */
+    public static function intOrNull($value, ?string $message = null): ?int
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::int($value, $message);
+    }
+
+    /** @param mixed $value */
     public static function integerish($value): int
     {
         $intVal = (int)$value;
@@ -62,6 +82,26 @@ class Asserted
         }
 
         return self::integerish($value);
+    }
+
+    /** @param mixed $value */
+    public static function float($value, ?string $message = null): float
+    {
+        if (!is_float($value)) {
+            throw new InvalidArgumentException($message ?? 'Provided value must be a float');
+        }
+
+        return $value;
+    }
+
+    /** @param mixed $value */
+    public static function floatOrNull($value, ?string $message = null): ?float
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::float($value, $message);
     }
 
     /** @param mixed $value */

@@ -124,4 +124,64 @@ class AssertedTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, Pagination::class));
     }
+
+    public function testIntWithValidValue(): void
+    {
+        self::assertEquals(3, Asserted::int(3));
+    }
+
+    public function testIntWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::int('3');
+    }
+
+    public function testIntFailsOnNull(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::int(null);
+    }
+
+    public function testIntOrNullWithValidValue(): void
+    {
+        self::assertEquals(3, Asserted::intOrNull(3));
+        self::assertNull(Asserted::intOrNull(null));
+    }
+
+    public function testIntOrNullWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::intOrNull('3');
+    }
+
+    public function testFloatWithValidValue(): void
+    {
+        self::assertEquals(3.0, Asserted::float(3.0));
+        self::assertEquals(3.1, Asserted::float(3.1));
+    }
+
+    public function testFloatWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::float('3');
+    }
+
+    public function testFloatFailsOnNull(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::float(null);
+    }
+
+    public function testFloatOrNullWithValidValue(): void
+    {
+        self::assertEquals(3.0, Asserted::floatOrNull(3.0));
+        self::assertEquals(3.1, Asserted::floatOrNull(3.1));
+        self::assertNull(Asserted::floatOrNull(null));
+    }
+
+    public function testFloatOrNullWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::floatOrNull('3');
+    }
 }
