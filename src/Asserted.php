@@ -22,8 +22,7 @@ class Asserted
         return $value;
     }
 
-    /** @param mixed $value */
-    public static function string($value): string
+    public static function string(mixed $value): string
     {
         if (!is_string($value)) {
             throw new InvalidArgumentException('Provided value must be a string');
@@ -32,8 +31,7 @@ class Asserted
         return $value;
     }
 
-    /** @param mixed $value */
-    public static function stringOrNull($value): ?string
+    public static function stringOrNull(mixed $value): ?string
     {
         if (null === $value) {
             return null;
@@ -42,8 +40,7 @@ class Asserted
         return self::string($value);
     }
 
-    /** @param mixed $value */
-    public static function int($value, ?string $message = null): int
+    public static function int(mixed $value, ?string $message = null): int
     {
         if (!is_int($value)) {
             throw new InvalidArgumentException($message ?? 'Provided value must be a int');
@@ -52,8 +49,7 @@ class Asserted
         return $value;
     }
 
-    /** @param mixed $value */
-    public static function intOrNull($value, ?string $message = null): ?int
+    public static function intOrNull(mixed $value, ?string $message = null): ?int
     {
         if (null === $value) {
             return null;
@@ -62,8 +58,7 @@ class Asserted
         return self::int($value, $message);
     }
 
-    /** @param mixed $value */
-    public static function integerish($value): int
+    public static function integerish(mixed $value): int
     {
         $intVal = (int)$value;
 
@@ -74,8 +69,7 @@ class Asserted
         return $intVal;
     }
 
-    /** @param mixed $value */
-    public static function integerishOrNull($value): ?int
+    public static function integerishOrNull(mixed $value): ?int
     {
         if (null === $value) {
             return null;
@@ -84,8 +78,7 @@ class Asserted
         return self::integerish($value);
     }
 
-    /** @param mixed $value */
-    public static function float($value, ?string $message = null): float
+    public static function float(mixed $value, ?string $message = null): float
     {
         if (!is_float($value)) {
             throw new InvalidArgumentException($message ?? 'Provided value must be a float');
@@ -94,8 +87,7 @@ class Asserted
         return $value;
     }
 
-    /** @param mixed $value */
-    public static function floatOrNull($value, ?string $message = null): ?float
+    public static function floatOrNull(mixed $value, ?string $message = null): ?float
     {
         if (null === $value) {
             return null;
@@ -104,8 +96,7 @@ class Asserted
         return self::float($value, $message);
     }
 
-    /** @param mixed $value */
-    public static function floatish($value): float
+    public static function floatish(mixed $value): float
     {
         $floatVal = (float)$value;
 
@@ -116,14 +107,31 @@ class Asserted
         return $floatVal;
     }
 
-    /** @param mixed $value */
-    public static function floatishOrNull($value): ?float
+    public static function floatishOrNull(mixed $value): ?float
     {
         if (null === $value) {
             return null;
         }
 
         return self::floatish($value);
+    }
+
+    public static function array(mixed $value, ?string $message = null): array
+    {
+        if (!is_array($value)) {
+            throw new InvalidArgumentException($message ?? 'Provided value must be an array');
+        }
+
+        return $value;
+    }
+
+    public static function arrayOrNull(mixed $value, ?string $message = null): ?array
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::array($value, $message);
     }
 
     /**
@@ -134,7 +142,7 @@ class Asserted
      *
      * @return T
      */
-    public static function instanceOf(object $value, string $class): object
+    public static function instanceOf(mixed $value, string $class): object
     {
         if (!$value instanceof $class) {
             throw new InvalidArgumentException('Provided value must not be of class ' . $class);

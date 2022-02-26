@@ -184,4 +184,37 @@ class AssertedTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         Asserted::floatOrNull('3');
     }
+
+    public function testArrayFailsOnNull(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::array(null);
+    }
+
+    public function testArrayFailsOnString(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::array('test');
+    }
+
+    public function testArraOnArray(): void
+    {
+        self::assertEquals(['a, b' => 'c'], Asserted::array(['a, b' => 'c']));
+    }
+
+    public function testArrayOrNullOnNull(): void
+    {
+        self::assertNull(Asserted::arrayOrNull(null));
+    }
+
+    public function testArrayOrNullOnArray(): void
+    {
+        self::assertEquals(['a, b' => 'c'], Asserted::arrayOrNull(['a, b' => 'c']));
+    }
+
+    public function testArrayOrNullFailsOnString(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::arrayOrNull('test');
+    }
 }
