@@ -217,4 +217,35 @@ class AssertedTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         Asserted::arrayOrNull('test');
     }
+
+    public function testBoolWithValidValue(): void
+    {
+        self::assertEquals(true, Asserted::bool(true));
+        self::assertEquals(false, Asserted::bool(false));
+    }
+
+    public function testBoolWithNull(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::bool(null);
+    }
+
+    public function testBoolWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::bool('test');
+    }
+
+    public function testBoolOrNullWithValidValue(): void
+    {
+        self::assertEquals(true, Asserted::boolOrNull(true));
+        self::assertEquals(false, Asserted::boolOrNull(false));
+        self::assertNull(Asserted::boolOrNull(null));
+    }
+
+    public function testBoolOrNullWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::boolOrNull('test');
+    }
 }

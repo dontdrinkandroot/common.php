@@ -134,6 +134,24 @@ class Asserted
         return self::array($value, $message);
     }
 
+    public static function bool(mixed $value, ?string $message = null): bool
+    {
+        if (!is_bool($value)) {
+            throw new InvalidArgumentException($message ?? 'Provided value must be a bool');
+        }
+
+        return $value;
+    }
+
+    public static function boolOrNull(mixed $value, ?string $message = null): ?bool
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::bool($value, $message);
+    }
+
     /**
      * @template T of object
      *
