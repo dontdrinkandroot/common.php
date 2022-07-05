@@ -11,6 +11,6 @@ class DateUtilsTest extends TestCase
     {
         $millis = DateUtils::toMillis(new DateTime());
         $dateTime = DateUtils::fromMillis($millis);
-        self::assertEquals($millis, DateUtils::toMillis($dateTime));
+        self::assertEqualsWithDelta($millis, DateUtils::toMillis($dateTime), 10);
     }
 }
