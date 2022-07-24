@@ -161,4 +161,9 @@ class FlexDate implements Stringable
 
         return self::PRECISION_NONE;
     }
+
+    public function isEmpty(): bool
+    {
+        return self::PRECISION_NONE === $this->getPrecision();
+    }
 }

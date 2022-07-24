@@ -120,9 +120,11 @@ class FlexDateTest extends TestCase
     {
         $flexDate = new FlexDate();
         $this->assertEquals(FlexDate::PRECISION_NONE, $flexDate->getPrecision());
+        $this->assertEquals(true, $flexDate->isEmpty());
 
         $flexDate->setYear(2015);
         $this->assertEquals(FlexDate::PRECISION_YEAR, $flexDate->getPrecision());
+        $this->assertEquals(false, $flexDate->isEmpty());
 
         $flexDate->setMonth(3);
         $this->assertEquals(FlexDate::PRECISION_MONTH, $flexDate->getPrecision());
