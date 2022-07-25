@@ -2,13 +2,13 @@
 
 namespace Dontdrinkandroot\Common;
 
-class CrudOperation
+enum CrudOperation: string
 {
-    public const LIST = 'LIST';
-    public const CREATE = 'CREATE';
-    public const READ = 'READ';
-    public const UPDATE = 'UPDATE';
-    public const DELETE = 'DELETE';
+    case LIST = 'LIST';
+    case CREATE = 'CREATE';
+    case READ = 'READ';
+    case UPDATE = 'UPDATE';
+    case DELETE = 'DELETE';
 
     public static function all(): array
     {
