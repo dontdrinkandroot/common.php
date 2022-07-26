@@ -13,31 +13,31 @@ class Asserted
      *
      * @return T
      */
-    public static function notNull($value)
+    public static function notNull($value, ?string $message = null)
     {
         if (null === $value) {
-            throw new InvalidArgumentException('Provided value must not be null');
+            throw new InvalidArgumentException($message ?? 'Provided value must not be null');
         }
 
         return $value;
     }
 
-    public static function string(mixed $value): string
+    public static function string(mixed $value, ?string $message = null): string
     {
         if (!is_string($value)) {
-            throw new InvalidArgumentException('Provided value must be a string');
+            throw new InvalidArgumentException($message ?? 'Provided value must be a string');
         }
 
         return $value;
     }
 
-    public static function stringOrNull(mixed $value): ?string
+    public static function stringOrNull(mixed $value, ?string $message = null): ?string
     {
         if (null === $value) {
             return null;
         }
 
-        return self::string($value);
+        return self::string($value, $message);
     }
 
     public static function int(mixed $value, ?string $message = null): int
@@ -58,24 +58,24 @@ class Asserted
         return self::int($value, $message);
     }
 
-    public static function integerish(mixed $value): int
+    public static function integerish(mixed $value, ?string $message = null): int
     {
         $intVal = (int)$value;
 
         if ((string)$intVal != (string)$value) {
-            throw new InvalidArgumentException('Provided value must be integerish');
+            throw new InvalidArgumentException($message ?? 'Provided value must be integerish');
         }
 
         return $intVal;
     }
 
-    public static function integerishOrNull(mixed $value): ?int
+    public static function integerishOrNull(mixed $value, ?string $message = null): ?int
     {
         if (null === $value) {
             return null;
         }
 
-        return self::integerish($value);
+        return self::integerish($value, $message);
     }
 
     public static function float(mixed $value, ?string $message = null): float
@@ -96,24 +96,24 @@ class Asserted
         return self::float($value, $message);
     }
 
-    public static function floatish(mixed $value): float
+    public static function floatish(mixed $value, ?string $message = null): float
     {
         $floatVal = (float)$value;
 
         if ((string)$floatVal != (string)$value) {
-            throw new InvalidArgumentException('Provided value must be floatish');
+            throw new InvalidArgumentException($message ?? 'Provided value must be floatish');
         }
 
         return $floatVal;
     }
 
-    public static function floatishOrNull(mixed $value): ?float
+    public static function floatishOrNull(mixed $value, ?string $message = null): ?float
     {
         if (null === $value) {
             return null;
         }
 
-        return self::floatish($value);
+        return self::floatish($value, $message);
     }
 
     public static function array(mixed $value, ?string $message = null): array
@@ -160,10 +160,10 @@ class Asserted
      *
      * @return T
      */
-    public static function instanceOf(mixed $value, string $class): object
+    public static function instanceOf(mixed $value, string $class, ?string $message = null): object
     {
         if (!$value instanceof $class) {
-            throw new InvalidArgumentException('Provided value must not be of class ' . $class);
+            throw new InvalidArgumentException($message ?? 'Provided value must not be of class ' . $class);
         }
 
         return $value;
@@ -177,12 +177,12 @@ class Asserted
      *
      * @return T|null
      */
-    public static function instanceOfOrNull(?object $value, string $class): ?object
+    public static function instanceOfOrNull(?object $value, string $class, ?string $message = null): ?object
     {
         if (null === $value) {
             return null;
         }
 
-        return self::instanceOf($value, $class);
+        return self::instanceOf($value, $class, $message);
     }
 }
