@@ -163,7 +163,7 @@ class Asserted
     public static function instanceOf(mixed $value, string $class, ?string $message = null): object
     {
         if (!$value instanceof $class) {
-            throw new InvalidArgumentException($message ?? 'Provided value must not be of class ' . $class);
+            throw new InvalidArgumentException($message ?? 'Provided value must be of class ' . $class);
         }
 
         return $value;
