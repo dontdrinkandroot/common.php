@@ -25,7 +25,9 @@ class Asserted
     public static function string(mixed $value, ?string $message = null): string
     {
         if (!is_string($value)) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be a string');
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be a string but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;
@@ -43,7 +45,9 @@ class Asserted
     public static function int(mixed $value, ?string $message = null): int
     {
         if (!is_int($value)) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be a int');
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be an int but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;
@@ -81,7 +85,9 @@ class Asserted
     public static function float(mixed $value, ?string $message = null): float
     {
         if (!is_float($value)) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be a float');
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be a float but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;
@@ -119,7 +125,9 @@ class Asserted
     public static function array(mixed $value, ?string $message = null): array
     {
         if (!is_array($value)) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be an array');
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be an array but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;
@@ -137,7 +145,9 @@ class Asserted
     public static function bool(mixed $value, ?string $message = null): bool
     {
         if (!is_bool($value)) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be a bool');
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be a bool but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;
@@ -163,7 +173,9 @@ class Asserted
     public static function instanceOf(mixed $value, string $class, ?string $message = null): object
     {
         if (!$value instanceof $class) {
-            throw new InvalidArgumentException($message ?? 'Provided value must be of class ' . $class);
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be of class ' . $class . ' but was ' . TypeUtils::getType($value)
+            );
         }
 
         return $value;

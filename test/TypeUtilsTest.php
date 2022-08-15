@@ -23,4 +23,15 @@ class TypeUtilsTest extends TestCase
         $this->assertEquals(1, TypeUtils::integerOrNull(1));
         $this->assertEquals(1, TypeUtils::integerOrNull("1"));
     }
+
+    public function testGetType(): void
+    {
+        self::assertEquals('NULL', TypeUtils::getType(null));
+        self::assertEquals('string', TypeUtils::getType('adsf'));
+        self::assertEquals('integer', TypeUtils::getType(1));
+        self::assertEquals('double', TypeUtils::getType(1.1));
+        self::assertEquals('array', TypeUtils::getType([]));
+        self::assertEquals('boolean', TypeUtils::getType(true));
+        self::assertEquals(SimplePopo::class, TypeUtils::getType(new SimplePopo('asdf', 3)));
+    }
 }

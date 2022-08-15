@@ -120,8 +120,15 @@ class AssertedTest extends TestCase
         $popo = new SimplePopo('string', 7);
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, SimplePopo::class));
         self::assertEquals(null, Asserted::instanceOfOrNull(null, SimplePopo::class));
+    }
 
+    public function testInstanceOfWrongClass(): void
+    {
+        $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Provided value must be of class Dontdrinkandroot\Common\Pagination\Pagination but was Dontdrinkandroot\Common\SimplePopo'
+        );
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, Pagination::class));
     }
 
@@ -182,6 +189,7 @@ class AssertedTest extends TestCase
     public function testFloatOrNullWithInvalidValue(): void
     {
         $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Provided value must be a float but was string');
         Asserted::floatOrNull('3');
     }
 

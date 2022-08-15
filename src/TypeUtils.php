@@ -39,4 +39,18 @@ class TypeUtils
 
         return ($num1 < $num2) ? -1 : 1;
     }
+
+    /**
+     * @param mixed $value
+     *
+     * @return string
+     */
+    public static function getType(mixed $value): string
+    {
+        if (is_object($value)) {
+            return get_class($value);
+        }
+
+        return gettype($value);
+    }
 }
