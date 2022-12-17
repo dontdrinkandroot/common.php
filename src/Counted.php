@@ -8,23 +8,12 @@ namespace Dontdrinkandroot\Common;
 class Counted
 {
     /**
-     * @param T   $value
+     * @param T $value
      * @param int $count
      */
     public function __construct(
-        private $value,
-        private int $count
+        public readonly mixed $value,
+        public readonly int $count
     ) {
-    }
-
-    /** @return T */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    public function getCount(): int
-    {
-        return $this->count;
     }
 }
