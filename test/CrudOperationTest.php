@@ -8,11 +8,28 @@ class CrudOperationTest extends TestCase
 {
     public function testAll(): void
     {
-        $all = CrudOperation::all();
-        $this->assertContains(CrudOperation::LIST, $all);
-        $this->assertContains(CrudOperation::CREATE, $all);
-        $this->assertContains(CrudOperation::READ, $all);
-        $this->assertContains(CrudOperation::UPDATE, $all);
-        $this->assertContains(CrudOperation::DELETE, $all);
+        $crudOperations = CrudOperation::all();
+        $this->assertEquals(
+            [
+                CrudOperation::LIST,
+                CrudOperation::READ,
+                CrudOperation::CREATE,
+                CrudOperation::UPDATE,
+                CrudOperation::DELETE
+            ],
+            $crudOperations
+        );
+    }
+
+    public function testAllRead(): void
+    {
+        $crudOperations = CrudOperation::allRead();
+        $this->assertEquals([CrudOperation::LIST, CrudOperation::READ], $crudOperations);
+    }
+
+    public function testAllWrite(): void
+    {
+        $crudOperations = CrudOperation::allWrite();
+        $this->assertEquals([CrudOperation::CREATE, CrudOperation::UPDATE, CrudOperation::DELETE], $crudOperations);
     }
 }

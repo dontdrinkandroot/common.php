@@ -12,6 +12,16 @@ enum CrudOperation: string
 
     public static function all(): array
     {
-        return [self::LIST, self::CREATE, self::READ, self::UPDATE, self::DELETE];
+        return [...self::allRead(), ...self::allWrite()];
+    }
+
+    public static function allRead(): array
+    {
+        return [self::LIST, self::READ];
+    }
+
+    public static function allWrite(): array
+    {
+        return [self::CREATE, self::UPDATE, self::DELETE];
     }
 }
