@@ -22,7 +22,7 @@ class PaginationTest extends TestCase
             $this->fail("Exception expected");
         } catch (InvalidArgumentException $e) {
             /* Expected */
-            $this->assertEquals('PerPage mustbe greater than 0', $e->getMessage());
+            $this->assertEquals('PerPage must be greater than 0', $e->getMessage());
         }
 
         try {
@@ -52,15 +52,33 @@ class PaginationTest extends TestCase
     public function testGetCurrentPage(): void
     {
         $pagination = new Pagination(1, 2, 3);
-        $this->assertEquals(1, $pagination->getCurrentPage());
+        $this->assertEquals(1, $pagination->currentPage);
 
         $pagination = new Pagination(42, 2, 3);
-        $this->assertEquals(42, $pagination->getCurrentPage());
+        $this->assertEquals(42, $pagination->currentPage);
     }
 
     public function testGetTotal(): void
     {
         $pagination = new Pagination(1, 2, 42);
-        $this->assertEquals(42, $pagination->getTotal());
+        $this->assertEquals(42, $pagination->total);
+    }
+
+    public function testHasNextPage(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        $this->assertTrue($pagination->hasNextPage());
+
+        $pagination = new Pagination(2, 2, 3);
+        $this->assertFalse($pagination->hasNextPage());
+    }
+
+    public function testHasPreviousPage(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        $this->assertFalse($pagination->hasPreviousPage());
+
+        $pagination = new Pagination(2, 2, 3);
+        $this->assertTrue($pagination->hasPreviousPage());
     }
 }

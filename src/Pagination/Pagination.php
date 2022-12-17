@@ -6,39 +6,22 @@ use InvalidArgumentException;
 
 class Pagination
 {
-    private int $currentPage;
-
-    private int $perPage;
-
-    private int $total;
-
-    public function __construct(int $currentPage, int $perPage, int $total)
-    {
+    public function __construct(
+        public readonly int $currentPage,
+        public readonly int $perPage,
+        public readonly int $total
+    ) {
         if ($currentPage < 1) {
             throw new InvalidArgumentException('CurrentPage must be greater than 0');
         }
 
         if ($perPage < 1) {
-            throw new InvalidArgumentException('PerPage mustbe greater than 0');
+            throw new InvalidArgumentException('PerPage must be greater than 0');
         }
 
         if ($total < 0) {
             throw new InvalidArgumentException('Total must be greater equals 0');
         }
-
-        $this->perPage = $perPage;
-        $this->currentPage = $currentPage;
-        $this->total = $total;
-    }
-
-    public function getCurrentPage(): int
-    {
-        return $this->currentPage;
-    }
-
-    public function getTotal(): int
-    {
-        return $this->total;
     }
 
     public function getTotalPages(): int
@@ -50,8 +33,13 @@ class Pagination
         return (int)(($this->total - 1) / $this->perPage + 1);
     }
 
-    public function getPerPage(): int
+    public function hasNextPage(): bool
     {
-        return $this->perPage;
+        return $this->currentPage < $this->getTotalPages();
+    }
+
+    public function hasPreviousPage(): bool
+    {
+        return $this->currentPage > 1;
     }
 }
