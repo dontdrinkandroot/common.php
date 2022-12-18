@@ -77,4 +77,24 @@ class StringUtils
 
         return strtolower($string);
     }
+
+    /**
+     * @param string|null $str
+     * @psalm-assert-if-false non-empty-string $str
+     * @return bool
+     */
+    public static function isEmpty(?string $str): bool
+    {
+        return null === $str || $str === '';
+    }
+
+    /**
+     * @param string|null $str
+     * @psalm-assert-if-true non-empty-string $str
+     * @return bool
+     */
+    public static function isNotEmpty(?string $str): bool
+    {
+        return null !== $str && '' !== $str;
+    }
 }

@@ -31,4 +31,18 @@ class StringUtilsTest extends TestCase
         $this->assertNull(StringUtils::getLastChar(''));
         $this->assertEquals('a', StringUtils::getLastChar('bla'));
     }
+
+    public function testIsEmpty(): void
+    {
+        self::assertTrue(StringUtils::isEmpty(null));
+        self::assertTrue(StringUtils::isEmpty(''));
+        self::assertFalse(StringUtils::isEmpty('NotEmpty'));
+    }
+
+    public function testIsNotEmpty(): void
+    {
+        self::assertFalse(StringUtils::isNotEmpty(null));
+        self::assertFalse(StringUtils::isNotEmpty(''));
+        self::assertTrue(StringUtils::isNotEmpty('NotEmpty'));
+    }
 }
