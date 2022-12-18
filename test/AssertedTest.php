@@ -97,6 +97,24 @@ class AssertedTest extends TestCase
         self::assertEquals('test', Asserted::string(null));
     }
 
+    public function testNonEmptyStringWithValidValues(): void
+    {
+        self::assertEquals('test', Asserted::nonEmptyString('test'));
+        self::assertEquals(' ', Asserted::nonEmptyString(' '));
+    }
+
+    public function testNonEmptyStringWithNullValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::nonEmptyString(null);
+    }
+
+    public function testNonEmptyStringWithEmptyString(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::nonEmptyString('');
+    }
+
     public function testStringOrNull(): void
     {
         self::assertEquals(null, Asserted::stringOrNull(null));

@@ -42,6 +42,21 @@ class Asserted
         return self::string($value, $message);
     }
 
+    /**
+     * @param mixed $value
+     * @return non-empty-string
+     */
+    public static function nonEmptyString($value, ?string $message = null): string
+    {
+        if (!is_string($value) || '' === $value) {
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be a non empty string, was ' . gettype($value)
+            );
+        }
+
+        return $value;
+    }
+
     public static function int(mixed $value, ?string $message = null): int
     {
         if (!is_int($value)) {
