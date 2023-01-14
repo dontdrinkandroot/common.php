@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Pagination;
 
 use InvalidArgumentException;
+use LogicException;
 use PHPUnit\Framework\TestCase;
 
 class PaginationTest extends TestCase
@@ -64,6 +65,46 @@ class PaginationTest extends TestCase
         $this->assertEquals(42, $pagination->total);
     }
 
+    public function testGetOffset(): void
+    {
+        $pagination = new Pagination(1, 2, 42);
+        self::assertEquals(0, $pagination->getOffset());
+
+        $pagination = $pagination->withNextPage();
+        self::assertEquals(2, $pagination->getOffset());
+    }
+
+    public function testComputeOffset(): void
+    {
+        self::assertEquals(0, Pagination::computeOffset(1, 2));
+        self::assertEquals(2, Pagination::computeOffset(2, 2));
+    }
+
+    public function testNextPage(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        self::assertEquals(2, $pagination->nextPage());
+
+        $pagination = new Pagination(2, 2, 3);
+        self::assertEquals(3, $pagination->nextPage());
+    }
+
+    public function testWithNextPage(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        $pagination = $pagination->withNextPage();
+        self::assertEquals(2, $pagination->currentPage);
+        self::assertEquals(2, $pagination->perPage);
+        self::assertEquals(3, $pagination->total);
+    }
+
+    public function testWithNextPageMissing(): void
+    {
+        $pagination = new Pagination(2, 2, 3);
+        $this->expectException(LogicException::class);
+        $pagination->withNextPage();
+    }
+
     public function testHasNextPage(): void
     {
         $pagination = new Pagination(1, 2, 3);
@@ -80,5 +121,30 @@ class PaginationTest extends TestCase
 
         $pagination = new Pagination(2, 2, 3);
         $this->assertTrue($pagination->hasPreviousPage());
+    }
+
+    public function testPreviousPage(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        self::assertEquals(0, $pagination->previousPage());
+
+        $pagination = new Pagination(2, 2, 3);
+        self::assertEquals(1, $pagination->previousPage());
+    }
+
+    public function testWithPreviousPage(): void
+    {
+        $pagination = new Pagination(2, 2, 3);
+        $pagination = $pagination->withPreviousPage();
+        self::assertEquals(1, $pagination->currentPage);
+        self::assertEquals(2, $pagination->perPage);
+        self::assertEquals(3, $pagination->total);
+    }
+
+    public function testWithPreviousPageMissing(): void
+    {
+        $pagination = new Pagination(1, 2, 3);
+        $this->expectException(LogicException::class);
+        $pagination->withPreviousPage();
     }
 }

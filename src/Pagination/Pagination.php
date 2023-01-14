@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Pagination;
 
 use InvalidArgumentException;
+use LogicException;
 
 class Pagination
 {
@@ -38,8 +39,44 @@ class Pagination
         return $this->currentPage < $this->getTotalPages();
     }
 
+    public function nextPage(): int
+    {
+        return $this->currentPage + 1;
+    }
+
+    public function withNextPage(): Pagination
+    {
+        if (!$this->hasNextPage()) {
+            throw new LogicException('No next page');
+        }
+        return new Pagination($this->nextPage(), $this->perPage, $this->total);
+    }
+
     public function hasPreviousPage(): bool
     {
         return $this->currentPage > 1;
+    }
+
+    public function previousPage(): int
+    {
+        return $this->currentPage - 1;
+    }
+
+    public function withPreviousPage(): Pagination
+    {
+        if (!$this->hasPreviousPage()) {
+            throw new LogicException('No previous page');
+        }
+        return new Pagination($this->previousPage(), $this->perPage, $this->total);
+    }
+
+    public function getOffset(): int
+    {
+        return ($this->currentPage - 1) * $this->perPage;
+    }
+
+    public static function computeOffset(int $page, int $perPage): int
+    {
+        return ($page - 1) * $perPage;
     }
 }
