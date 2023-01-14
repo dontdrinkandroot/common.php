@@ -2,31 +2,23 @@
 
 namespace Dontdrinkandroot\Common\Pagination;
 
+use ArrayObject;
+
 /**
  * @template T
+ *
+ * @extends ArrayObject<array-key,T>
  */
-class PaginatedResult
+class PaginatedResult extends ArrayObject
 {
-    private Pagination $pagination;
-
-    /** @var array<array-key,T> */
-    private array $results;
-
     /** @param array<array-key,T> $results */
-    public function __construct(Pagination $pagination, array $results)
+    public function __construct(private readonly Pagination $pagination, array $results)
     {
-        $this->pagination = $pagination;
-        $this->results = $results;
+        parent::__construct($results);
     }
 
     public function getPagination(): Pagination
     {
         return $this->pagination;
-    }
-
-    /** @return array<array-key,T> */
-    public function getResults(): array
-    {
-        return $this->results;
     }
 }

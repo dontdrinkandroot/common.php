@@ -13,6 +13,6 @@ class PaginatedResultTest extends TestCase
         $paginatedResult = new PaginatedResult($pagination, $results);
 
         $this->assertEquals(2, $paginatedResult->getPagination()->getTotalPages());
-        $this->assertEquals(['c', 'b', 'a'], $paginatedResult->getResults());
+        $this->assertEquals(['c', 'b', 'a'], $paginatedResult->getArrayCopy());
     }
 }
