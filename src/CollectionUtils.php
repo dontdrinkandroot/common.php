@@ -30,7 +30,6 @@ class CollectionUtils
      * @template R
      *
      * @param iterable<T> $collection
-     * @param string      $propertyName
      *
      * @return list<R>
      */
@@ -75,7 +74,6 @@ class CollectionUtils
      * @template T
      *
      * @param iterable<T> $collection
-     * @param string      $propertyName
      *
      * @return array<array-key,T>
      */
@@ -102,8 +100,6 @@ class CollectionUtils
     /**
      * @param array<array-key, array> $arr
      * @param array-key               $key
-     *
-     * @return array
      */
     public static function hashByKey(array $arr, int|string $key, bool $overrideExisting = false): array
     {

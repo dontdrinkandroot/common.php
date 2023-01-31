@@ -43,10 +43,9 @@ class Asserted
     }
 
     /**
-     * @param mixed $value
      * @return non-empty-string
      */
-    public static function nonEmptyString($value, ?string $message = null): string
+    public static function nonEmptyString(mixed $value, ?string $message = null): string
     {
         if (!is_string($value) || '' === $value) {
             throw new InvalidArgumentException(
@@ -180,9 +179,7 @@ class Asserted
     /**
      * @template T of object
      *
-     * @param mixed           $value
      * @param class-string<T> $class
-     *
      * @return T
      */
     public static function instanceOf(mixed $value, string $class, ?string $message = null): object
@@ -199,7 +196,7 @@ class Asserted
     /**
      * @template T of object
      *
-     * @param mixed|null      $value
+     * @param mixed $value
      * @param class-string<T> $class
      *
      * @return T|null

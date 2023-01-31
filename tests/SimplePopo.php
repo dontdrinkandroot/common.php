@@ -4,14 +4,8 @@ namespace Dontdrinkandroot\Common;
 
 class SimplePopo
 {
-    public string $stringProperty;
-
-    public int $intProperty;
-
-    public function __construct(string $property1, int $property2)
+    public function __construct(public string $stringProperty, public int $intProperty)
     {
-        $this->stringProperty = $property1;
-        $this->intProperty = $property2;
     }
 
     public function getStringProperty(): string

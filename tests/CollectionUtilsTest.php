@@ -48,7 +48,7 @@ class CollectionUtilsTest extends TestCase
         $element3 = new SimplePopo('b', 2);
         $collection[] = $element3;
 
-        $result = CollectionUtils::hash($collection, fn(SimplePopo $simplePopo) => $simplePopo->intProperty);
+        $result = CollectionUtils::hash($collection, fn(SimplePopo $simplePopo): int => $simplePopo->intProperty);
         $this->assertEquals($result[1], $element1);
         $this->assertEquals($result[2], $element3);
         $this->assertEquals($result[3], $element2);

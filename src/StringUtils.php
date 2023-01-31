@@ -9,12 +9,10 @@ class StringUtils
      *
      * @param string $haystack The string to search in.
      * @param string $needle   The string to search.
-     *
-     * @return bool
      */
     public static function startsWith(string $haystack, string $needle): bool
     {
-        return $needle === "" || strpos($haystack, $needle) === 0;
+        return $needle === "" || str_starts_with($haystack, $needle);
     }
 
     /**
@@ -22,12 +20,10 @@ class StringUtils
      *
      * @param string $haystack The string to search in.
      * @param string $needle   The string to search.
-     *
-     * @return bool
      */
     public static function endsWith(string $haystack, string $needle): bool
     {
-        return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+        return $needle === "" || str_ends_with($haystack, $needle);
     }
 
     /**
@@ -79,9 +75,7 @@ class StringUtils
     }
 
     /**
-     * @param string|null $str
      * @psalm-assert-if-false non-empty-string $str
-     * @return bool
      */
     public static function isEmpty(?string $str): bool
     {
@@ -89,9 +83,7 @@ class StringUtils
     }
 
     /**
-     * @param string|null $str
      * @psalm-assert-if-true non-empty-string $str
-     * @return bool
      */
     public static function isNotEmpty(?string $str): bool
     {

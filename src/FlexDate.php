@@ -8,10 +8,10 @@ use Stringable;
 
 class FlexDate implements Stringable
 {
-    public const PRECISION_YEAR = 'year';
-    public const PRECISION_MONTH = 'month';
-    public const PRECISION_DAY = 'day';
-    public const PRECISION_NONE = 'none';
+    final public const PRECISION_YEAR = 'year';
+    final public const PRECISION_MONTH = 'month';
+    final public const PRECISION_DAY = 'day';
+    final public const PRECISION_NONE = 'none';
 
     public function __construct(protected ?int $year = null, protected ?int $month = null, protected ?int $day = null)
     {
@@ -63,7 +63,7 @@ class FlexDate implements Stringable
             $this->assertValid();
 
             return true;
-        } catch (Exception $e) {
+        } catch (Exception) {
             return false;
         }
     }

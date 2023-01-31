@@ -9,7 +9,6 @@ class Counted
 {
     /**
      * @param T $value
-     * @param int $count
      */
     public function __construct(
         public readonly mixed $value,

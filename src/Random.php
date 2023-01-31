@@ -8,10 +8,10 @@ use InvalidArgumentException;
 
 class Random
 {
-    public const STR_LOWER = 'abcdefghijklmnopqrstuvwxyz';
-    public const STR_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    public const STR_DIGIT = '0123456789';
-    public const STR_ALNUM = self::STR_LOWER . self::STR_UPPER . self::STR_DIGIT;
+    final public const STR_LOWER = 'abcdefghijklmnopqrstuvwxyz';
+    final public const STR_UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    final public const STR_DIGIT = '0123456789';
+    final public const STR_ALNUM = self::STR_LOWER . self::STR_UPPER . self::STR_DIGIT;
 
     public static function string(
         int $minLength,
