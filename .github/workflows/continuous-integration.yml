@@ -3,84 +3,13 @@ name: "Continuous Integration"
 on: push
 
 jobs:
-    phpunit:
-        name: "PHPUnit"
-        runs-on: ubuntu-latest
-
-        strategy:
-            matrix:
-                php-version:
-                    - "8.1"
-                deps:
-                    - "highest"
-                    - "lowest"
-
-        steps:
-            -   name: "Checkout"
-                uses: "actions/checkout@v2"
-            -   name: "Install PHP"
-                uses: "shivammathur/setup-php@v2"
-                with:
-                    php-version: "${{ matrix.php-version }}"
-                    coverage: "pcov"
-                    ini-values: "zend.assertions=1"
-            -   name: "Validate composer"
-                run: "composer validate"
-            -   name: "Install dependencies with Composer"
-                uses: "ramsey/composer-install@v2"
-                with:
-                    dependency-versions: "${{ matrix.deps }}"
-            -   name: "Run PHPUnit"
-                run: "vendor/bin/phpunit --coverage-clover=coverage.clover.xml --log-junit log.junit.xml"
-                continue-on-error: "${{ matrix.deps == 'lowest' }}"
-            -   name: "Upload coverage"
-                uses: "actions/upload-artifact@v2"
-                if: matrix.php-version == '8.1' && matrix.deps == 'highest'
-                with:
-                    name: "coverage"
-                    path: |
-                        coverage.clover.xml
-                        log.junit.xml
-
-    psalm:
-        name: Psalm
-        runs-on: ubuntu-latest
-        steps:
-            -   name: "Checkout code"
-                uses: "actions/checkout@v2"
-            -   name: "Install PHP"
-                uses: "shivammathur/setup-php@v2"
-                with:
-                    php-version: "8.1"
-            -   name: "Globally install psalm"
-                run: |
-                    composer global require --no-progress --no-scripts --no-plugins vimeo/psalm
-            -   name: "Validate composer"
-                run: "composer validate"
-            -   name: "Install dependencies with Composer"
-                uses: "ramsey/composer-install@v2"
-            -   name: "Run psalm"
-                run: "psalm"
+    phpunit-and-psalm:
+        uses: dontdrinkandroot/github-actions/.github/workflows/php-library.yml@main
+        secrets: inherit
 
     sonarcloud:
-        name: "SonarCloud"
-        runs-on: ubuntu-latest
-        needs: phpunit
-        steps:
-            -   name: Checkout
-                uses: actions/checkout@v2
-                with:
-                    fetch-depth: 0
-            -   name: Download coverage
-                uses: actions/download-artifact@v2
-                with:
-                    name: coverage
-            -   name: Fix code coverage paths
-                run: |
-                    sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace@g' coverage.clover.xml
-                    sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace@g' log.junit.xml
-            -   name: SonarCloud Scan
-                uses: sonarsource/sonarcloud-github-action@v1.6
-                env:
-                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        uses: dontdrinkandroot/github-actions/.github/workflows/php-sonarcloud.yml@main
+        needs: phpunit-and-psalm
+        with:
+            project-key: 'dontdrinkandroot_common.php'
+        secrets: inherit
