@@ -10,16 +10,19 @@ enum CrudOperation: string
     case UPDATE = 'UPDATE';
     case DELETE = 'DELETE';
 
+    /** @return list<CrudOperation> */
     public static function all(): array
     {
         return [...self::allRead(), ...self::allWrite()];
     }
 
+    /** @return list<CrudOperation> */
     public static function allRead(): array
     {
         return [self::LIST, self::READ];
     }
 
+    /** @return list<CrudOperation> */
     public static function allWrite(): array
     {
         return [self::CREATE, self::UPDATE, self::DELETE];
