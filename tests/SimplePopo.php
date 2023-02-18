@@ -4,8 +4,12 @@ namespace Dontdrinkandroot\Common;
 
 class SimplePopo
 {
-    public function __construct(public string $stringProperty, public int $intProperty)
-    {
+    public function __construct(
+        public string $stringProperty,
+        public int $intProperty,
+        protected bool $protectedProperty = false,
+        private bool $privateProperty = false
+    ) {
     }
 
     public function getStringProperty(): string
@@ -26,5 +30,15 @@ class SimplePopo
     public function setIntProperty(int $intProperty): void
     {
         $this->intProperty = $intProperty;
+    }
+
+    public function getProtectedProperty(): bool
+    {
+        return $this->protectedProperty;
+    }
+
+    public function getPrivateProperty(): bool
+    {
+        return $this->privateProperty;
     }
 }
