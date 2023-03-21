@@ -1,9 +1,11 @@
 <?php
 
-namespace Dontdrinkandroot\Common;
+namespace Dontdrinkandroot\Common\Util;
 
 class SimplePopo
 {
+    use SimpleTrait;
+
     public function __construct(
         public string $stringProperty,
         public int $intProperty,

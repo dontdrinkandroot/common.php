@@ -2,6 +2,7 @@
 
 namespace Dontdrinkandroot\Common;
 
+use Dontdrinkandroot\Common\Util\SimplePopo;
 use Exception;
 use PHPUnit\Framework\TestCase;
 

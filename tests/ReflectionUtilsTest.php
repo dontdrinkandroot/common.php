@@ -2,6 +2,9 @@
 
 namespace Dontdrinkandroot\Common;
 
+use Dontdrinkandroot\Common\Util\InheritedSimplePopo;
+use Dontdrinkandroot\Common\Util\SimplePopo;
+use Dontdrinkandroot\Common\Util\SimpleTrait;
 use PHPUnit\Framework\TestCase;
 
 class ReflectionUtilsTest extends TestCase
@@ -17,5 +20,13 @@ class ReflectionUtilsTest extends TestCase
         $this->assertEquals(43, $simplePopo->getIntProperty());
         $this->assertTrue($simplePopo->getProtectedProperty());
         $this->assertTrue($simplePopo->getPrivateProperty());
+    }
+
+    public function testUsesTrait(): void
+    {
+        $simplePopo = new SimplePopo('foo', 42);
+        $this->assertTrue(ReflectionUtils::usesTrait($simplePopo, SimpleTrait::class));
+        $this->assertTrue(ReflectionUtils::usesTrait(InheritedSimplePopo::class, SimpleTrait::class));
+        $this->assertFalse(ReflectionUtils::usesTrait($simplePopo, \DateTime::class));
     }
 }
