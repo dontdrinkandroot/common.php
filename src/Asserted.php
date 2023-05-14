@@ -13,7 +13,7 @@ class Asserted
      *
      * @return T
      */
-    public static function notNull($value, ?string $message = null)
+    public static function notNull(mixed $value, ?string $message = null)
     {
         if (null === $value) {
             throw new InvalidArgumentException($message ?? 'Provided value must not be null');
@@ -174,6 +174,34 @@ class Asserted
         }
 
         return self::bool($value, $message);
+    }
+
+    /**
+     * @template T
+     * @return iterable<T>
+     */
+    public static function iterable(mixed $value, ?string $message = null): iterable
+    {
+        if (!is_iterable($value)) {
+            throw new InvalidArgumentException(
+                $message ?? 'Provided value must be iterable but was ' . TypeUtils::getType($value)
+            );
+        }
+
+        return $value;
+    }
+
+    /**
+     * @template T
+     * @return iterable<T>|null
+     */
+    public static function iterableOrNull(mixed $value, ?string $message = null): ?iterable
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::iterable($value, $message);
     }
 
     /**

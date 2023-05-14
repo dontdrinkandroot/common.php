@@ -245,7 +245,7 @@ class AssertedTest extends TestCase
         Asserted::array('test');
     }
 
-    public function testArraOnArray(): void
+    public function testArrayOnArray(): void
     {
         self::assertEquals(['a, b' => 'c'], Asserted::array(['a, b' => 'c']));
     }
@@ -264,6 +264,35 @@ class AssertedTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         Asserted::arrayOrNull('test');
+    }
+
+    public function testIterableFailsOnNull(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::iterable(null);
+    }
+
+    public function testIterableFailsOnString(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::iterable('test');
+    }
+
+    public function testIterableWithValidValue(): void
+    {
+        self::assertEquals(['a', 'b'], Asserted::iterable(['a', 'b']));
+    }
+
+    public function testIterableOrNullFailsOnInt(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::iterable(1);
+    }
+
+    public function testIterableOrNullWithValidValue(): void
+    {
+        self::assertNull(Asserted::iterableOrNull(null));
+        self::assertEquals(['a', 'b'], Asserted::iterableOrNull(['a', 'b']));
     }
 
     public function testBoolWithValidValue(): void
