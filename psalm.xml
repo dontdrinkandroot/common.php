@@ -21,5 +21,14 @@
                 <referencedProperty name="PHPUnit\Framework\TestCase::$backupStaticAttributes"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
+        <DuplicateClass>
+            <errorLevel type="suppress">
+                <file name="src/Psalm/CommonPlugin.php"/>
+            </errorLevel>
+        </DuplicateClass>
     </issueHandlers>
+
+    <plugins>
+        <plugin filename="./src/Psalm/CommonPlugin.php"/>
+    </plugins>
 </psalm>

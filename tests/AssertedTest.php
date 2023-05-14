@@ -69,6 +69,9 @@ class AssertedTest extends TestCase
         Asserted::floatish('asdf');
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testNotNull(): void
     {
         self::assertEquals('test', Asserted::notNull('test'));
@@ -81,6 +84,9 @@ class AssertedTest extends TestCase
         Asserted::notNull(null);
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testString(): void
     {
         self::assertEquals('test', Asserted::string('test'));
@@ -116,6 +122,9 @@ class AssertedTest extends TestCase
         Asserted::nonEmptyString('');
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testStringOrNull(): void
     {
         self::assertEquals(null, Asserted::stringOrNull(null));
@@ -151,6 +160,9 @@ class AssertedTest extends TestCase
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, Pagination::class));
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testIntWithValidValue(): void
     {
         self::assertEquals(3, Asserted::int(3));
@@ -168,6 +180,9 @@ class AssertedTest extends TestCase
         Asserted::int(null);
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testIntOrNullWithValidValue(): void
     {
         self::assertEquals(3, Asserted::intOrNull(3));
@@ -180,6 +195,9 @@ class AssertedTest extends TestCase
         Asserted::intOrNull('3');
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testFloatWithValidValue(): void
     {
         self::assertEquals(3.0, Asserted::float(3.0));
@@ -198,6 +216,9 @@ class AssertedTest extends TestCase
         Asserted::float(null);
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testFloatOrNullWithValidValue(): void
     {
         self::assertEquals(3.0, Asserted::floatOrNull(3.0));
@@ -263,6 +284,9 @@ class AssertedTest extends TestCase
         Asserted::bool('test');
     }
 
+    /**
+     * @psalm-suppress RedundantCondition
+     */
     public function testBoolOrNullWithValidValue(): void
     {
         self::assertEquals(true, Asserted::boolOrNull(true));
