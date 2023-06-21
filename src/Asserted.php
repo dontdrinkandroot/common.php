@@ -8,10 +8,9 @@ class Asserted
 {
     /**
      * @template T
-     *
      * @param T|null $value
-     *
      * @return T
+     * @psalm-assert !null $value
      */
     public static function notNull(mixed $value, ?string $message = null)
     {
@@ -22,6 +21,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert !null $value
+     */
     public static function string(mixed $value, ?string $message = null): string
     {
         if (!is_string($value)) {
@@ -33,6 +35,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert string|null $value
+     */
     public static function stringOrNull(mixed $value, ?string $message = null): ?string
     {
         if (null === $value) {
@@ -44,6 +49,7 @@ class Asserted
 
     /**
      * @return non-empty-string
+     * @psalm-assert non-empty-string $value
      */
     public static function nonEmptyString(mixed $value, ?string $message = null): string
     {
@@ -56,6 +62,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert int $value
+     */
     public static function int(mixed $value, ?string $message = null): int
     {
         if (!is_int($value)) {
@@ -67,6 +76,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert int|null $value
+     */
     public static function intOrNull(mixed $value, ?string $message = null): ?int
     {
         if (null === $value) {
@@ -96,6 +108,9 @@ class Asserted
         return self::integerish($value, $message);
     }
 
+    /**
+     * @psalm-assert float $value
+     */
     public static function float(mixed $value, ?string $message = null): float
     {
         if (!is_float($value)) {
@@ -107,6 +122,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert float|null $value
+     */
     public static function floatOrNull(mixed $value, ?string $message = null): ?float
     {
         if (null === $value) {
@@ -136,6 +154,9 @@ class Asserted
         return self::floatish($value, $message);
     }
 
+    /**
+     * @psalm-assert array $value
+     */
     public static function array(mixed $value, ?string $message = null): array
     {
         if (!is_array($value)) {
@@ -147,6 +168,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert array|null $value
+     */
     public static function arrayOrNull(mixed $value, ?string $message = null): ?array
     {
         if (null === $value) {
@@ -156,6 +180,9 @@ class Asserted
         return self::array($value, $message);
     }
 
+    /**
+     * @psalm-assert bool $value
+     */
     public static function bool(mixed $value, ?string $message = null): bool
     {
         if (!is_bool($value)) {
@@ -167,6 +194,9 @@ class Asserted
         return $value;
     }
 
+    /**
+     * @psalm-assert bool|null $value
+     */
     public static function boolOrNull(mixed $value, ?string $message = null): ?bool
     {
         if (null === $value) {
@@ -179,6 +209,7 @@ class Asserted
     /**
      * @template T
      * @return iterable<T>
+     * @psalm-assert iterable<T> $value
      */
     public static function iterable(mixed $value, ?string $message = null): iterable
     {
@@ -194,6 +225,7 @@ class Asserted
     /**
      * @template T
      * @return iterable<T>|null
+     * @psalm-assert iterable<T>|null $value
      */
     public static function iterableOrNull(mixed $value, ?string $message = null): ?iterable
     {
@@ -206,9 +238,9 @@ class Asserted
 
     /**
      * @template T of object
-     *
      * @param class-string<T> $class
      * @return T
+     * @psalm-assert =T $value
      */
     public static function instanceOf(mixed $value, string $class, ?string $message = null): object
     {
@@ -223,11 +255,10 @@ class Asserted
 
     /**
      * @template T of object
-     *
      * @param mixed $value
      * @param class-string<T> $class
-     *
      * @return T|null
+     * @psalm-assert ?T $value
      */
     public static function instanceOfOrNull(?object $value, string $class, ?string $message = null): ?object
     {

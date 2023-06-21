@@ -138,20 +138,27 @@ class AssertedTest extends TestCase
     {
         $popo = new SimplePopo('string', 7);
         self::assertEquals($popo, Asserted::instanceOf($popo, SimplePopo::class));
+    }
 
+    public function testInstanceOfWithWrongClass(): void
+    {
+        /** @var object $popo */
+        $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
         self::assertEquals($popo, Asserted::instanceOf($popo, Pagination::class));
     }
 
     public function testInstanceOfOrNull(): void
     {
+        /** @var object|null $popo */
         $popo = new SimplePopo('string', 7);
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, SimplePopo::class));
         self::assertEquals(null, Asserted::instanceOfOrNull(null, SimplePopo::class));
     }
 
-    public function testInstanceOfWrongClass(): void
+    public function testInstanceOfOrNullWithWrongClass(): void
     {
+        /** @var object|null $popo */
         $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
