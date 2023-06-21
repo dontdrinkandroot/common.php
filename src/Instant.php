@@ -4,8 +4,9 @@ namespace Dontdrinkandroot\Common;
 
 use DateTime;
 use DateTimeInterface;
+use Stringable;
 
-class Instant
+class Instant implements Stringable
 {
     private int $timestamp;
 
@@ -66,5 +67,13 @@ class Instant
     public static function fromDateTime(DateTime $dateTime): self
     {
         return new self(DateUtils::toMillis($dateTime));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString(): string
+    {
+        return (string)$this->timestamp;
     }
 }
