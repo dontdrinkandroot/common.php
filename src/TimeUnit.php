@@ -2,8 +2,6 @@
 
 namespace Dontdrinkandroot\Common;
 
-/* Timeunits from Milliseconds to years, mapped to their milliseconds value */
-
 enum TimeUnit: int
 {
     case MILLISECOND = 1;
