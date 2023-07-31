@@ -60,6 +60,9 @@ class StringUtils
         return $str[$length - 1];
     }
 
+    /**
+     * @param non-empty-string $pattern
+     */
     public static function underscore(
         string $string,
         int $case = CASE_LOWER,
