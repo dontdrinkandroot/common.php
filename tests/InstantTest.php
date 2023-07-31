@@ -20,6 +20,13 @@ class InstantTest extends TestCase
         $this->assertEquals($timestamp, $instant->getTimestamp());
     }
 
+    public function testFromUnixTimestamp(): void
+    {
+        $timestamp = 123456;
+        $instant = Instant::fromUnixTimestamp($timestamp);
+        $this->assertEquals($timestamp * 1000, $instant->getTimestamp());
+    }
+
     public function testAdd(): void
     {
         $instant = Instant::fromTimestamp(123456789);
@@ -66,5 +73,11 @@ class InstantTest extends TestCase
         $dateTime = new DateTime('2021-01-01 12:34:56.789');
         $instant = Instant::fromDateTime($dateTime);
         $this->assertEquals(1609504496789, $instant->getTimestamp());
+    }
+
+    public function testToString(): void
+    {
+        $instant = Instant::fromTimestamp(123456789);
+        $this->assertEquals('123456789', (string)$instant);
     }
 }
