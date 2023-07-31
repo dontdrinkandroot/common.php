@@ -7,52 +7,58 @@ use PHPUnit\Framework\TestCase;
 
 class InstantTest extends TestCase
 {
-    public function testConstruct(): void
+    public function testNow(): void
     {
-        $instant = new Instant();
+        $instant = Instant::now();
         $this->assertLessThanOrEqual(DateUtils::currentMillis(), $instant->getTimestamp());
     }
 
-    public function testConstructWithTimestamp(): void
+    public function testFromTimestamp(): void
     {
         $timestamp = 123456789;
-        $instant = new Instant($timestamp);
+        $instant = Instant::fromTimestamp($timestamp);
         $this->assertEquals($timestamp, $instant->getTimestamp());
     }
 
     public function testAdd(): void
     {
-        $instant = new Instant(123456789);
+        $instant = Instant::fromTimestamp(123456789);
         $instant->add(1, TimeUnit::SECOND);
         $this->assertEquals(123456789 + 1000, $instant->getTimestamp());
     }
 
     public function testSub(): void
     {
-        $instant = new Instant(123456789);
+        $instant = Instant::fromTimestamp(123456789);
         $instant->sub(2, TimeUnit::MINUTE);
         $this->assertEquals(123456789 - (2 * 60 * 1000), $instant->getTimestamp());
     }
 
     public function testPlus(): void
     {
-        $instant = new Instant(123456789);
+        $instant = Instant::fromTimestamp(123456789);
         $instant = $instant->plus(3, TimeUnit::HOUR);
         $this->assertEquals(123456789 + (3 * 60 * 60 * 1000), $instant->getTimestamp());
     }
 
     public function testMinus(): void
     {
-        $instant = new Instant(123456789);
+        $instant = Instant::fromTimestamp(123456789);
         $instant = $instant->minus(4, TimeUnit::DAY);
         $this->assertEquals(123456789 - (4 * 24 * 60 * 60 * 1000), $instant->getTimestamp());
     }
 
-    public function testToDateTime(): void
+    public function testGetDateTime(): void
     {
-        $instant = new Instant(123456789);
-        $dateTime = $instant->toDateTime();
+        $instant = Instant::fromTimestamp(123456789);
+        $dateTime = $instant->getDateTime();
         $this->assertEquals(123456789, DateUtils::toMillis($dateTime));
+    }
+
+    public function testGetUnixTimestamp(): void
+    {
+        $instant = Instant::fromTimestamp(123456789);
+        $this->assertEquals(123456, $instant->getUnixTimestamp());
     }
 
     public function testFromDateTime(): void

@@ -8,18 +8,23 @@ use Stringable;
 
 class Instant implements Stringable
 {
-    private int $timestamp;
-
-    /**
-     * @param int|null $timestamp The timestamp in milliseconds since epoch or null for current time.
-     */
-    public function __construct(?int $timestamp = null)
+    private function __construct(private int $timestamp)
     {
-        if (null === $timestamp) {
-            $timestamp = DateUtils::currentMillis();
-        }
+    }
 
-        $this->timestamp = $timestamp;
+    public static function fromTimestamp(int $timestamp): self
+    {
+        return new self($timestamp);
+    }
+
+    public static function fromUnixTimestamp(int $timestamp): self
+    {
+        return new self($timestamp * 1000);
+    }
+
+    public static function now(): self
+    {
+        return self::fromTimestamp(DateUtils::currentMillis());
     }
 
     /**
@@ -59,7 +64,12 @@ class Instant implements Stringable
         return $this->timestamp;
     }
 
-    public function toDateTime(): DateTimeInterface
+    public function getUnixTimestamp(): int
+    {
+        return (int)floor($this->timestamp / 1000);
+    }
+
+    public function getDateTime(): DateTimeInterface
     {
         return DateUtils::fromMillis($this->timestamp);
     }
