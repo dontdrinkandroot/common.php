@@ -2,41 +2,23 @@
 
 namespace Dontdrinkandroot\Common\Collection;
 
+use Countable;
+use IteratorAggregate;
+
 /**
  * @template T
+ * @extends IteratorAggregate<array-key,T>
  */
-abstract class Collection
+interface Collection extends Countable, IteratorAggregate
 {
-    /** @var array<array-key, T> */
-    protected array $hashedValues = [];
+    public function isEmpty(): bool;
 
-    public function isEmpty(): bool
-    {
-        return empty($this->hashedValues);
-    }
-
-    /**
-     * @return list<T>
-     */
-    public function values(): array
-    {
-        return array_values($this->hashedValues);
-    }
-
-    /**
-     * @param callable(T):void $forEachFunction
-     */
-    public function forEach(callable $forEachFunction): void
-    {
-        foreach ($this->hashedValues as $value) {
-            $forEachFunction($value);
-        }
-    }
+    /** @return iterable<T> */
+    public function values(): iterable;
 
 //    /**
-//     * @param callable(T):bool $filterFunction
-//     *
-//     * @return static<T>
+//     * @param Closure(T):bool $filterFn
+//     * @return Collection<T>
 //     */
-//    public abstract function filter(callable $filterFunction): Collection;
+//    public function filter(\Closure $filterFn): Collection;
 }

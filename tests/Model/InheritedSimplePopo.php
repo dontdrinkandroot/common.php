@@ -1,6 +1,6 @@
 <?php
 
-namespace Dontdrinkandroot\Common\Util;
+namespace Dontdrinkandroot\Common\Model;
 
 class InheritedSimplePopo extends SimplePopo
 {

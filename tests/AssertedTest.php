@@ -2,8 +2,8 @@
 
 namespace Dontdrinkandroot\Common;
 
+use Dontdrinkandroot\Common\Model\SimplePopo;
 use Dontdrinkandroot\Common\Pagination\Pagination;
-use Dontdrinkandroot\Common\Util\SimplePopo;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -162,7 +162,7 @@ class AssertedTest extends TestCase
         $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'Provided value must be of class Dontdrinkandroot\Common\Pagination\Pagination but was Dontdrinkandroot\Common\Util\SimplePopo'
+            'Provided value must be of class Dontdrinkandroot\Common\Pagination\Pagination but was Dontdrinkandroot\Common\Model\SimplePopo'
         );
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, Pagination::class));
     }
