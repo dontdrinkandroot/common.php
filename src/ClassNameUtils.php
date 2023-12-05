@@ -10,11 +10,8 @@ class ClassNameUtils
     {
         $lastPart = self::getShortName($className);
 
-        $tableizedShortName = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $lastPart);
-
-        if ($tableizedShortName === null) {
-            throw new RuntimeException(sprintf('preg_replace returned null for value "%s"', $lastPart));
-        }
+        $tableizedShortName = preg_replace('~(?<=\\w)([A-Z])~u', '_$1', $lastPart)
+            ?? throw new RuntimeException(sprintf('preg_replace returned null for value "%s"', $lastPart));
 
         return mb_strtolower($tableizedShortName);
     }

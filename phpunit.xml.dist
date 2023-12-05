@@ -6,6 +6,9 @@
         <include>
             <directory>src</directory>
         </include>
+        <exclude>
+            <file>src/Psalm/CommonPlugin.php</file>
+        </exclude>
     </coverage>
 
     <testsuites>

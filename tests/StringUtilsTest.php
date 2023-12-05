@@ -45,4 +45,14 @@ class StringUtilsTest extends TestCase
         self::assertFalse(StringUtils::isNotEmpty(''));
         self::assertTrue(StringUtils::isNotEmpty('NotEmpty'));
     }
+
+    public function testUnderscoreLower(): void
+    {
+        self::assertEquals('lower_case', StringUtils::underscore('lowerCase'));
+    }
+
+    public function testUnderscoreUpper(): void
+    {
+        self::assertEquals('UPPER_CASE', StringUtils::underscore('UpperCase', CASE_UPPER));
+    }
 }
