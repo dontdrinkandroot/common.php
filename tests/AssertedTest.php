@@ -335,4 +335,42 @@ class AssertedTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         Asserted::boolOrNull('test');
     }
+
+    public function testPositiveIntWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt(-1);
+
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt(0);
+
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt('1');
+
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt(null);
+    }
+
+    public function testPositivIntWithValueValue(): void
+    {
+        self::assertEquals(1, Asserted::positiveInt(1));
+    }
+
+    public function testPositiveIntOrNullWithInvalidValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt(-1);
+
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt(0);
+
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::positiveInt('1');
+    }
+
+    public function testPositivIntOrNullWithValueValue(): void
+    {
+        self::assertEquals(1, Asserted::positiveInt(1));
+        self::assertNull(Asserted::positiveIntOrNull(null));
+    }
 }

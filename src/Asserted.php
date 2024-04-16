@@ -88,6 +88,32 @@ class Asserted
         return self::int($value, $message);
     }
 
+    /**
+     * @psalm-assert positive-int $value
+     */
+    public static function positiveInt(mixed $value, ?string $message = null): int
+    {
+        $intVal = self::int($value);
+
+        if ($intVal < 1) {
+            throw new InvalidArgumentException($message ?? 'Provided value must be a positive int');
+        }
+
+        return $intVal;
+    }
+
+    /**
+     * @psalm-assert positive-int|null $value
+     */
+    public static function positiveIntOrNull(mixed $value, ?string $message = null): ?int
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::positiveInt($value, $message);
+    }
+
     public static function integerish(mixed $value, ?string $message = null): int
     {
         $intVal = (int)$value;
