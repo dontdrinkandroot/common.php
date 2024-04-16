@@ -90,6 +90,7 @@ class Asserted
 
     /**
      * @psalm-assert positive-int $value
+     * @return positive-int
      */
     public static function positiveInt(mixed $value, ?string $message = null): int
     {
@@ -104,6 +105,7 @@ class Asserted
 
     /**
      * @psalm-assert positive-int|null $value
+     * @return positive-int|null
      */
     public static function positiveIntOrNull(mixed $value, ?string $message = null): ?int
     {
