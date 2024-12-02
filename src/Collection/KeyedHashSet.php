@@ -5,6 +5,7 @@ namespace Dontdrinkandroot\Common\Collection;
 use Closure;
 use InvalidArgumentException;
 use OutOfBoundsException;
+use Override;
 
 /**
  * @template TKey
@@ -47,33 +48,25 @@ class KeyedHashSet extends AbstractHashSet implements KeyedSet
         return $set;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function getByKey(mixed $key): mixed
     {
         return $this->elements[($this->keyHashFn)($key)] ?? null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function fetchByKey(mixed $key): mixed
     {
         return $this->getByKey($key) ?? throw new OutOfBoundsException('No element for hash: ' . ($this->keyHashFn)($key));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function containsKey(mixed $key): bool
     {
         return isset($this->elements[($this->keyHashFn)($key)]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function removeByKey(mixed $key): bool
     {
         $hash = ($this->keyHashFn)($key);
@@ -86,9 +79,7 @@ class KeyedHashSet extends AbstractHashSet implements KeyedSet
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function filter(Closure $filterFn): KeyedHashSet
     {
         $filtered = new KeyedHashSet($this->elementHashFn, $this->keyHashFn);
@@ -101,9 +92,7 @@ class KeyedHashSet extends AbstractHashSet implements KeyedSet
         return $filtered;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     protected function hash(mixed $element): int|string
     {
         return ($this->keyHashFn)(($this->elementHashFn)($element));

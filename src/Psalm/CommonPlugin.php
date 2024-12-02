@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Psalm;
 
 use Dontdrinkandroot\Common\Asserted;
+use Override;
 use PhpParser\Node\Expr\StaticCall;
 use Psalm\CodeLocation;
 use Psalm\Issue\RedundantCondition;
@@ -15,14 +16,13 @@ use SimpleXMLElement;
 
 class CommonPlugin implements PluginEntryPointInterface, AfterMethodCallAnalysisInterface
 {
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function __invoke(RegistrationInterface $registration, ?SimpleXMLElement $config = null): void
     {
         $registration->registerHooksFromClass(self::class);
     }
 
+    #[Override]
     public static function afterMethodCallAnalysis(AfterMethodCallAnalysisEvent $event): void
     {
         $expr = $event->getExpr();

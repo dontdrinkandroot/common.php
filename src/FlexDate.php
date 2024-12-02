@@ -4,14 +4,15 @@ namespace Dontdrinkandroot\Common;
 
 use DateTime;
 use Exception;
+use Override;
 use Stringable;
 
 class FlexDate implements Stringable
 {
-    final public const PRECISION_YEAR = 'year';
-    final public const PRECISION_MONTH = 'month';
-    final public const PRECISION_DAY = 'day';
-    final public const PRECISION_NONE = 'none';
+    final public const string PRECISION_YEAR = 'year';
+    final public const string PRECISION_MONTH = 'month';
+    final public const string PRECISION_DAY = 'day';
+    final public const string PRECISION_NONE = 'none';
 
     public function __construct(protected ?int $year = null, protected ?int $month = null, protected ?int $day = null)
     {
@@ -104,9 +105,7 @@ class FlexDate implements Stringable
         return $dateTime;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function __toString(): string
     {
         $string = '';

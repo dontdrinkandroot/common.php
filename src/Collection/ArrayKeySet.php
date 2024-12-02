@@ -5,6 +5,7 @@ namespace Dontdrinkandroot\Common\Collection;
 use ArrayIterator;
 use Closure;
 use InvalidArgumentException;
+use Override;
 use Traversable;
 
 /**
@@ -35,25 +36,19 @@ class ArrayKeySet implements Set
         return $set;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function isEmpty(): bool
     {
         return empty($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function values(): iterable
     {
         return array_keys($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function add(mixed $element): bool
     {
         if (isset($this->elements[$element])) {
@@ -65,9 +60,7 @@ class ArrayKeySet implements Set
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function remove(mixed $element): bool
     {
         if (isset($this->elements[$element])) {
@@ -79,18 +72,16 @@ class ArrayKeySet implements Set
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function contains(mixed $element): bool
     {
         return isset($this->elements[$element]);
     }
 
     /**
-     * {@inheritdoc}
      * @return ArrayKeySet<T>
      */
+    #[Override]
     public function filter(Closure $filterFn): ArrayKeySet
     {
         $set = new ArrayKeySet();
@@ -103,17 +94,13 @@ class ArrayKeySet implements Set
         return $set;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function count(): int
     {
         return count($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function getIterator(): Traversable
     {
         return new ArrayIterator(array_keys($this->elements));

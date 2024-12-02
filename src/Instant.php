@@ -4,6 +4,7 @@ namespace Dontdrinkandroot\Common;
 
 use DateTime;
 use DateTimeInterface;
+use Override;
 use Stringable;
 
 class Instant implements Stringable
@@ -79,9 +80,7 @@ class Instant implements Stringable
         return new self(DateUtils::toMillis($dateTime));
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function __toString(): string
     {
         return (string)$this->timestamp;

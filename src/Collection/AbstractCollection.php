@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Collection;
 
 use ArrayIterator;
+use Override;
 use Traversable;
 
 /**
@@ -14,30 +15,25 @@ abstract class AbstractCollection implements Collection
     /** @var array<array-key, T> */
     protected array $elements = [];
 
+    #[Override]
     public function isEmpty(): bool
     {
         return empty($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function values(): array
     {
         return array_values($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function count(): int
     {
         return count($this->elements);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function getIterator(): Traversable
     {
         return new ArrayIterator($this->elements);

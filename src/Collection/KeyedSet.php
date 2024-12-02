@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Collection;
 
 use Closure;
+use Override;
 
 /**
  * @template TKey
@@ -30,8 +31,8 @@ interface KeyedSet extends Set
     public function removeByKey(mixed $key): bool;
 
     /**
-     * {@inheritdoc}
      * @return KeyedSet<TKey, T>
      */
+    #[Override]
     public function filter(Closure $filterFn): KeyedSet;
 }

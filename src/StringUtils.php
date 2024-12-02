@@ -71,10 +71,10 @@ class StringUtils
         $string = preg_replace($pattern, '_$1', $string);
 
         if ($case === CASE_UPPER) {
-            return strtoupper($string);
+            return strtoupper((string)$string);
         }
 
-        return strtolower($string);
+        return strtolower((string)$string);
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace Dontdrinkandroot\Common\Collection;
 
+use Override;
+
 /**
  * @template T
  * @extends AbstractCollection<T>
@@ -9,9 +11,7 @@ namespace Dontdrinkandroot\Common\Collection;
  */
 abstract class AbstractHashSet extends AbstractCollection implements Set
 {
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function add(mixed $element): bool
     {
         $hash = $this->hash($element);
@@ -23,9 +23,7 @@ abstract class AbstractHashSet extends AbstractCollection implements Set
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function remove(mixed $element): bool
     {
         $hash = $this->hash($element);
@@ -37,9 +35,7 @@ abstract class AbstractHashSet extends AbstractCollection implements Set
         return false;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function contains(mixed $element): bool
     {
         $hash = $this->hash($element);

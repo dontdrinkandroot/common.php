@@ -4,6 +4,7 @@ namespace Dontdrinkandroot\Common\Collection;
 
 use Closure;
 use InvalidArgumentException;
+use Override;
 
 /**
  * @template T
@@ -36,9 +37,7 @@ class HashSet extends AbstractHashSet
         return $set;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     public function filter(Closure $filterFn): HashSet
     {
         $filtered = new HashSet($this->hashFn);
@@ -51,9 +50,7 @@ class HashSet extends AbstractHashSet
         return $filtered;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[Override]
     protected function hash(mixed $element): int|string
     {
         return ($this->hashFn)($element);
