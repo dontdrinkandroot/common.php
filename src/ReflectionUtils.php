@@ -21,7 +21,8 @@ class ReflectionUtils
      */
     public static function usesTrait(object|string $object, string $trait): bool
     {
-        if (in_array($trait, class_uses($object))) {
+        $classUses = Asserted::notFalse(class_uses($object));
+        if (in_array($trait, $classUses)) {
             return true;
         }
 

@@ -296,4 +296,22 @@ class Asserted
 
         return self::instanceOf($value, $class, $message);
     }
+
+    /**
+     * @template T
+     *
+     * @param T|false $value
+     *
+     * @psalm-assert !false $value
+     *
+     * @return T
+     */
+    public static function notFalse(mixed $value, ?string $message = null): mixed
+    {
+        if (false === $value) {
+            throw new InvalidArgumentException($message ?? 'Provided value must not be false');
+        }
+
+        return $value;
+    }
 }

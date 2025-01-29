@@ -373,4 +373,15 @@ class AssertedTest extends TestCase
         self::assertEquals(1, Asserted::positiveInt(1));
         self::assertNull(Asserted::positiveIntOrNull(null));
     }
+
+    public function testNotFalseWithValidValue(): void
+    {
+        self::assertEquals('test', Asserted::notFalse('test'));
+    }
+
+    public function testNotFalseWithFalseValue(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::notFalse(false);
+    }
 }
