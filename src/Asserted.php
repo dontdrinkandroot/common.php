@@ -10,7 +10,7 @@ class Asserted
      * @template T
      * @param T|null $value
      * @return T
-     * @psalm-assert !null $value
+     * @phpstan-assert !null $value
      */
     public static function notNull(mixed $value, ?string $message = null)
     {
@@ -22,7 +22,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert !null $value
+     * @phpstan-assert !null $value
      */
     public static function string(mixed $value, ?string $message = null): string
     {
@@ -36,7 +36,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert string|null $value
+     * @phpstan-assert string|null $value
      */
     public static function stringOrNull(mixed $value, ?string $message = null): ?string
     {
@@ -49,7 +49,7 @@ class Asserted
 
     /**
      * @return non-empty-string
-     * @psalm-assert non-empty-string $value
+     * @phpstan-assert non-empty-string $value
      */
     public static function nonEmptyString(mixed $value, ?string $message = null): string
     {
@@ -63,7 +63,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert int $value
+     * @phpstan-assert int $value
      */
     public static function int(mixed $value, ?string $message = null): int
     {
@@ -77,7 +77,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert int|null $value
+     * @phpstan-assert int|null $value
      */
     public static function intOrNull(mixed $value, ?string $message = null): ?int
     {
@@ -89,8 +89,8 @@ class Asserted
     }
 
     /**
-     * @psalm-assert positive-int $value
      * @return positive-int
+     * @phpstan-assert positive-int $value
      */
     public static function positiveInt(mixed $value, ?string $message = null): int
     {
@@ -104,8 +104,8 @@ class Asserted
     }
 
     /**
-     * @psalm-assert positive-int|null $value
      * @return positive-int|null
+     * @phpstan-assert positive-int|null $value
      */
     public static function positiveIntOrNull(mixed $value, ?string $message = null): ?int
     {
@@ -137,7 +137,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert float $value
+     * @phpstan-assert float $value
      */
     public static function float(mixed $value, ?string $message = null): float
     {
@@ -151,7 +151,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert float|null $value
+     * @phpstan-assert float|null $value
      */
     public static function floatOrNull(mixed $value, ?string $message = null): ?float
     {
@@ -183,7 +183,8 @@ class Asserted
     }
 
     /**
-     * @psalm-assert array $value
+     * @phpstan-assert mixed[] $value
+     * @return mixed[]
      */
     public static function array(mixed $value, ?string $message = null): array
     {
@@ -197,7 +198,8 @@ class Asserted
     }
 
     /**
-     * @psalm-assert array|null $value
+     * @phpstan-assert mixed[]|null $value
+     * @return mixed[]|null
      */
     public static function arrayOrNull(mixed $value, ?string $message = null): ?array
     {
@@ -209,7 +211,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert bool $value
+     * @phpstan-assert bool $value
      */
     public static function bool(mixed $value, ?string $message = null): bool
     {
@@ -223,7 +225,7 @@ class Asserted
     }
 
     /**
-     * @psalm-assert bool|null $value
+     * @phpstan-assert bool|null $value
      */
     public static function boolOrNull(mixed $value, ?string $message = null): ?bool
     {
@@ -235,9 +237,8 @@ class Asserted
     }
 
     /**
-     * @template T
-     * @return iterable<T>
-     * @psalm-assert iterable<T> $value
+     * @return iterable<mixed>
+     * @phpstan-assert iterable<mixed> $value
      */
     public static function iterable(mixed $value, ?string $message = null): iterable
     {
@@ -251,9 +252,8 @@ class Asserted
     }
 
     /**
-     * @template T
-     * @return iterable<T>|null
-     * @psalm-assert iterable<T>|null $value
+     * @return iterable<mixed>|null
+     * @phpstan-assert iterable<mixed>|null $value
      */
     public static function iterableOrNull(mixed $value, ?string $message = null): ?iterable
     {
@@ -268,7 +268,7 @@ class Asserted
      * @template T of object
      * @param class-string<T> $class
      * @return T
-     * @psalm-assert =T $value
+     * @phpstan-assert =T $value
      */
     public static function instanceOf(mixed $value, string $class, ?string $message = null): object
     {
@@ -286,9 +286,9 @@ class Asserted
      * @param mixed $value
      * @param class-string<T> $class
      * @return T|null
-     * @psalm-assert ?T $value
+     * @phpstan-assert ?T $value
      */
-    public static function instanceOfOrNull(?object $value, string $class, ?string $message = null): ?object
+    public static function instanceOfOrNull(mixed $value, string $class, ?string $message = null): ?object
     {
         if (null === $value) {
             return null;
@@ -299,12 +299,9 @@ class Asserted
 
     /**
      * @template T
-     *
      * @param T|false $value
-     *
-     * @psalm-assert !false $value
-     *
      * @return T
+     * @phpstan-assert !false $value
      */
     public static function notFalse(mixed $value, ?string $message = null): mixed
     {

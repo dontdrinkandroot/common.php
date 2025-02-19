@@ -30,7 +30,6 @@ class StringUtils
      * Get the first character of a string.
      *
      * @param string $str The string to get the first character of.
-     *
      * @return string|null The first character or null if not found.
      */
     public static function getFirstChar(string $str): ?string
@@ -46,8 +45,7 @@ class StringUtils
     /**
      * Get the last character of a string.
      *
-     * @param string false The string to get the last character of.
-     *
+     * @param string $str The string to get the last character of.
      * @return string|null The last character or null if not found.
      */
     public static function getLastChar(string $str): ?string
@@ -78,7 +76,7 @@ class StringUtils
     }
 
     /**
-     * @psalm-assert-if-false non-empty-string $str
+     * @phpstan-assert-if-false non-empty-string $str
      */
     public static function isEmpty(?string $str): bool
     {
@@ -86,7 +84,7 @@ class StringUtils
     }
 
     /**
-     * @psalm-assert-if-true non-empty-string $str
+     * @phpstan-assert-if-true non-empty-string $str
      */
     public static function isNotEmpty(?string $str): bool
     {

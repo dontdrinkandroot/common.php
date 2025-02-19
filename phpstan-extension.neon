@@ -1,0 +1,2 @@
+rules:
+    - Dontdrinkandroot\Common\PHPStan\RedundantAssert

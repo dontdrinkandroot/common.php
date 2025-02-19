@@ -3,13 +3,17 @@ name: "Continuous Integration"
 on: push
 
 jobs:
-    phpunit-and-psalm:
-        uses: dontdrinkandroot/github-actions/.github/workflows/php-library.yml@main
+    phpunit:
+        uses: dontdrinkandroot/github-actions/.github/workflows/php-library-phpunit.yml@main
+        secrets: inherit
+
+    phpstan:
+        uses: dontdrinkandroot/github-actions/.github/workflows/php-library-phpstan.yml@main
         secrets: inherit
 
     sonarcloud:
         uses: dontdrinkandroot/github-actions/.github/workflows/php-sonarcloud.yml@main
-        needs: phpunit-and-psalm
+        needs: phpstan
         with:
             project-key: 'dontdrinkandroot_common.php'
         secrets: inherit

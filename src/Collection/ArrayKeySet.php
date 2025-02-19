@@ -23,6 +23,7 @@ class ArrayKeySet implements Set
 
     /**
      * @param iterable<array-key> $iterable
+     * @return ArrayKeySet<array-key>
      */
     public static function fromIterable(iterable $iterable, bool $allowDuplicates = false): ArrayKeySet
     {

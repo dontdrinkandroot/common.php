@@ -21,6 +21,7 @@ abstract class AbstractCollection implements Collection
         return empty($this->elements);
     }
 
+    /** @return T[] */
     #[Override]
     public function values(): array
     {

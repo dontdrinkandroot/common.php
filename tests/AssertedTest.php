@@ -69,12 +69,11 @@ class AssertedTest extends TestCase
         Asserted::floatish('asdf');
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testNotNull(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals('test', Asserted::notNull('test'));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3, Asserted::notNull(3));
     }
 
@@ -84,11 +83,9 @@ class AssertedTest extends TestCase
         Asserted::notNull(null);
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testString(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals('test', Asserted::string('test'));
     }
 
@@ -106,7 +103,9 @@ class AssertedTest extends TestCase
 
     public function testNonEmptyStringWithValidValues(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals('test', Asserted::nonEmptyString('test'));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(' ', Asserted::nonEmptyString(' '));
     }
 
@@ -122,12 +121,11 @@ class AssertedTest extends TestCase
         Asserted::nonEmptyString('');
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testStringOrNull(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(null, Asserted::stringOrNull(null));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals('test', Asserted::stringOrNull('test'));
 
         $this->expectException(InvalidArgumentException::class);
@@ -137,12 +135,12 @@ class AssertedTest extends TestCase
     public function testInstanceOf(): void
     {
         $popo = new SimplePopo('string', 7);
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals($popo, Asserted::instanceOf($popo, SimplePopo::class));
     }
 
     public function testInstanceOfWithWrongClass(): void
     {
-        /** @var object $popo */
         $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
         self::assertEquals($popo, Asserted::instanceOf($popo, Pagination::class));
@@ -150,15 +148,15 @@ class AssertedTest extends TestCase
 
     public function testInstanceOfOrNull(): void
     {
-        /** @var object|null $popo */
         $popo = new SimplePopo('string', 7);
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, SimplePopo::class));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(null, Asserted::instanceOfOrNull(null, SimplePopo::class));
     }
 
     public function testInstanceOfOrNullWithWrongClass(): void
     {
-        /** @var object|null $popo */
         $popo = new SimplePopo('string', 7);
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
@@ -167,11 +165,9 @@ class AssertedTest extends TestCase
         self::assertEquals($popo, Asserted::instanceOfOrNull($popo, Pagination::class));
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testIntWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3, Asserted::int(3));
     }
 
@@ -187,12 +183,11 @@ class AssertedTest extends TestCase
         Asserted::int(null);
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testIntOrNullWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3, Asserted::intOrNull(3));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::intOrNull(null));
     }
 
@@ -202,12 +197,11 @@ class AssertedTest extends TestCase
         Asserted::intOrNull('3');
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testFloatWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3.0, Asserted::float(3.0));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3.1, Asserted::float(3.1));
     }
 
@@ -223,13 +217,13 @@ class AssertedTest extends TestCase
         Asserted::float(null);
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testFloatOrNullWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3.0, Asserted::floatOrNull(3.0));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(3.1, Asserted::floatOrNull(3.1));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::floatOrNull(null));
     }
 
@@ -254,16 +248,19 @@ class AssertedTest extends TestCase
 
     public function testArrayOnArray(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(['a, b' => 'c'], Asserted::array(['a, b' => 'c']));
     }
 
     public function testArrayOrNullOnNull(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::arrayOrNull(null));
     }
 
     public function testArrayOrNullOnArray(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(['a, b' => 'c'], Asserted::arrayOrNull(['a, b' => 'c']));
     }
 
@@ -287,6 +284,7 @@ class AssertedTest extends TestCase
 
     public function testIterableWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(['a', 'b'], Asserted::iterable(['a', 'b']));
     }
 
@@ -298,13 +296,17 @@ class AssertedTest extends TestCase
 
     public function testIterableOrNullWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::iterableOrNull(null));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(['a', 'b'], Asserted::iterableOrNull(['a', 'b']));
     }
 
     public function testBoolWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(true, Asserted::bool(true));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(false, Asserted::bool(false));
     }
 
@@ -320,13 +322,13 @@ class AssertedTest extends TestCase
         Asserted::bool('test');
     }
 
-    /**
-     * @psalm-suppress RedundantCondition
-     */
     public function testBoolOrNullWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(true, Asserted::boolOrNull(true));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(false, Asserted::boolOrNull(false));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::boolOrNull(null));
     }
 
@@ -353,6 +355,7 @@ class AssertedTest extends TestCase
 
     public function testPositivIntWithValueValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals(1, Asserted::positiveInt(1));
     }
 
@@ -370,12 +373,15 @@ class AssertedTest extends TestCase
 
     public function testPositivIntOrNullWithValueValue(): void
     {
-        self::assertEquals(1, Asserted::positiveInt(1));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
+        self::assertEquals(1, Asserted::positiveIntOrNull(1));
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertNull(Asserted::positiveIntOrNull(null));
     }
 
     public function testNotFalseWithValidValue(): void
     {
+        /** @phpstan-ignore ddrCommon.redundantAssert */
         self::assertEquals('test', Asserted::notFalse('test'));
     }
 

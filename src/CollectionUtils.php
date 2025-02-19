@@ -27,17 +27,18 @@ class CollectionUtils
 
     /**
      * @template T
-     * @template R
+     * @template P of string&key-of T
      *
      * @param iterable<T> $collection
+     * @param P $propertyName
      *
-     * @return list<R>
+     * @return list<T[P]>
      */
     public static function collectProperty(iterable $collection, string $propertyName): array
     {
         $results = [];
         foreach ($collection as $element) {
-            /** @var R $element */
+            /** @var T[P] $element */
             $element = $element->{$propertyName};
             $results[] = $element;
         }
@@ -98,8 +99,11 @@ class CollectionUtils
     }
 
     /**
-     * @param array<array-key, array> $arr
-     * @param array-key               $key
+     * @template T of array<array-key,mixed>
+     *
+     * @param array<array-key, T> $arr
+     * @param array-key $key
+     * @return array<array-key, T>
      */
     public static function hashByKey(array $arr, int|string $key, bool $overrideExisting = false): array
     {

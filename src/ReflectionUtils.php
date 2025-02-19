@@ -17,6 +17,7 @@ class ReflectionUtils
      * @template T
      * @param object|class-string $object
      * @param class-string<T> $trait
+     * @phpstan-assert-if-true =T $object
      * @return bool
      */
     public static function usesTrait(object|string $object, string $trait): bool

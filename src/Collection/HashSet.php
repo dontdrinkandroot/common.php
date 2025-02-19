@@ -23,7 +23,7 @@ class HashSet extends AbstractHashSet
      * @template StaticT
      * @param iterable<StaticT> $iterable
      * @param Closure(StaticT):array-key $hashFn
-     * @return HashSet
+     * @return HashSet<StaticT>
      */
     public static function fromIterable(iterable $iterable, Closure $hashFn, bool $allowDuplicates = false): HashSet
     {
@@ -37,6 +37,7 @@ class HashSet extends AbstractHashSet
         return $set;
     }
 
+    /** @return HashSet<T> */
     #[Override]
     public function filter(Closure $filterFn): HashSet
     {

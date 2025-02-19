@@ -15,7 +15,7 @@ class DateUtils
 
     public static function fromMillis(int $millis): DateTimeInterface
     {
-        return DateTime::createFromFormat('U.v', ((int)($millis / 1000)) . "." . ($millis % 1000));
+        return Asserted::notFalse(DateTime::createFromFormat('U.v', ((int)($millis / 1000)) . "." . ($millis % 1000)));
     }
 
     public static function toMillis(DateTimeInterface $dateTime): int

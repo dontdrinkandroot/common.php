@@ -34,15 +34,21 @@ class StringUtilsTest extends TestCase
 
     public function testIsEmpty(): void
     {
+        /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertTrue(StringUtils::isEmpty(null));
+        /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertTrue(StringUtils::isEmpty(''));
+        /** @phpstan-ignore staticMethod.impossibleType */
         self::assertFalse(StringUtils::isEmpty('NotEmpty'));
     }
 
     public function testIsNotEmpty(): void
     {
+        /** @phpstan-ignore staticMethod.impossibleType */
         self::assertFalse(StringUtils::isNotEmpty(null));
+        /** @phpstan-ignore staticMethod.impossibleType */
         self::assertFalse(StringUtils::isNotEmpty(''));
+        /** @phpstan-ignore staticMethod.alreadyNarrowedType */
         self::assertTrue(StringUtils::isNotEmpty('NotEmpty'));
     }
 

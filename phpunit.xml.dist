@@ -7,7 +7,7 @@
             <directory>src</directory>
         </include>
         <exclude>
-            <file>src/Psalm/CommonPlugin.php</file>
+            <file>src/PHPStan/RedudantAssert.php</file>
         </exclude>
     </coverage>
 

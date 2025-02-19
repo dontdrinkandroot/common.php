@@ -79,6 +79,7 @@ class KeyedHashSet extends AbstractHashSet implements KeyedSet
         return false;
     }
 
+    /** @return KeyedHashSet<TKey, T> */
     #[Override]
     public function filter(Closure $filterFn): KeyedHashSet
     {
