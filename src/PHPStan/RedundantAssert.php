@@ -14,7 +14,6 @@ use PHPStan\Type\Constant\ConstantIntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\TypeCombinator;
 use PHPStan\Type\VerbosityLevel;
-use PHPStan\Type\ObjectType;
 
 /**
  * @implements Rule<StaticCall>
@@ -281,10 +280,10 @@ class RedundantAssert implements Rule
                     break;
                 }
 
-                var_dump($firstArgType);
                 if (
                     $firstArgType->isNull()->no()
-                    && $firstArgType instanceof ObjectType
+                    && $firstArgType->isObject()->yes()
+                    /** @phpstan-ignore method.notFound */
                     && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()
                 ) {
                     $errors[] = RuleErrorBuilder::message(
@@ -310,7 +309,11 @@ class RedundantAssert implements Rule
 
                 if (
                     $firstArgType->isNull()->yes()
-                    || ($firstArgType instanceof ObjectType && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes())
+                    || (
+                        $firstArgType->isObject()->yes()
+                        /** @phpstan-ignore method.notFound */
+                        && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()
+                    )
                 ) {
                     $errors[] = RuleErrorBuilder::message(
                         sprintf(
