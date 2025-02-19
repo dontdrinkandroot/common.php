@@ -14,6 +14,7 @@ use PHPStan\Type\Constant\ConstantIntegerType;
 use PHPStan\Type\MixedType;
 use PHPStan\Type\TypeCombinator;
 use PHPStan\Type\VerbosityLevel;
+use PHPStan\Type\ObjectType;
 
 /**
  * @implements Rule<StaticCall>
@@ -280,8 +281,12 @@ class RedundantAssert implements Rule
                     break;
                 }
 
-                /** @phpstan-ignore method.notFound */
-                if ($firstArgType->isInstanceOf($secondArgValueClass->name)->yes()) {
+                var_dump($firstArgType);
+                if (
+                    $firstArgType->isNull()->no()
+                    && $firstArgType instanceof ObjectType
+                    && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()
+                ) {
                     $errors[] = RuleErrorBuilder::message(
                         sprintf(
                             "The value of type %s is always an instance of %s, so the Asserted::instanceOf call is redundant.",
@@ -303,8 +308,10 @@ class RedundantAssert implements Rule
                     break;
                 }
 
-                /** @phpstan-ignore method.notFound */
-                if ($firstArgType->isNull()->yes() || $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()) {
+                if (
+                    $firstArgType->isNull()->yes()
+                    || ($firstArgType instanceof ObjectType && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes())
+                ) {
                     $errors[] = RuleErrorBuilder::message(
                         sprintf(
                             "The value of type %s is always an instance of %s or null, so the Asserted::instanceOfOrNull call is redundant.",
