@@ -9,4 +9,4 @@ dontdrinkandroot/common
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=dontdrinkandroot_common.php&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=dontdrinkandroot_common.php)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=dontdrinkandroot_common.php&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=dontdrinkandroot_common.php)
 
-Commonly used PHP extensions and helpers
+Commonly used PHP extensions and helpers. Comes with PHPStan extension.
