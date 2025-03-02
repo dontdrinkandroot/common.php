@@ -9,7 +9,7 @@ class CrudOperationTest extends TestCase
     public function testAll(): void
     {
         $crudOperations = CrudOperation::all();
-        $this->assertEquals(
+        self::assertEquals(
             [
                 CrudOperation::LIST,
                 CrudOperation::READ,
@@ -24,12 +24,12 @@ class CrudOperationTest extends TestCase
     public function testAllRead(): void
     {
         $crudOperations = CrudOperation::allRead();
-        $this->assertEquals([CrudOperation::LIST, CrudOperation::READ], $crudOperations);
+        self::assertEquals([CrudOperation::LIST, CrudOperation::READ], $crudOperations);
     }
 
     public function testAllWrite(): void
     {
         $crudOperations = CrudOperation::allWrite();
-        $this->assertEquals([CrudOperation::CREATE, CrudOperation::UPDATE, CrudOperation::DELETE], $crudOperations);
+        self::assertEquals([CrudOperation::CREATE, CrudOperation::UPDATE, CrudOperation::DELETE], $crudOperations);
     }
 }

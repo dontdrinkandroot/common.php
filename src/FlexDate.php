@@ -127,7 +127,7 @@ class FlexDate implements Stringable
     public static function fromString(string $dateString): FlexDate
     {
         $flexDate = new FlexDate();
-        if (empty($dateString)) {
+        if (StringUtils::isEmpty($dateString)) {
             return $flexDate;
         }
 

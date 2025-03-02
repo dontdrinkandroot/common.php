@@ -120,6 +120,7 @@ class Asserted
     {
         $intVal = (int)$value;
 
+        /** @phpstan-ignore notEqual.notAllowed */
         if ((string)$intVal != (string)$value) {
             throw new InvalidArgumentException($message ?? 'Provided value must be integerish');
         }
@@ -166,6 +167,7 @@ class Asserted
     {
         $floatVal = (float)$value;
 
+        /** @phpstan-ignore notEqual.notAllowed */
         if ((string)$floatVal != (string)$value) {
             throw new InvalidArgumentException($message ?? 'Provided value must be floatish');
         }

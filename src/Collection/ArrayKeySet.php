@@ -4,6 +4,7 @@ namespace Dontdrinkandroot\Common\Collection;
 
 use ArrayIterator;
 use Closure;
+use Dontdrinkandroot\Common\ArrayUtils;
 use InvalidArgumentException;
 use Override;
 use Traversable;
@@ -40,7 +41,7 @@ class ArrayKeySet implements Set
     #[Override]
     public function isEmpty(): bool
     {
-        return empty($this->elements);
+        return ArrayUtils::isEmpty($this->elements);
     }
 
     #[Override]

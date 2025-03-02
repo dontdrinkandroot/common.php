@@ -3,6 +3,7 @@
 namespace Dontdrinkandroot\Common\Collection;
 
 use ArrayIterator;
+use Dontdrinkandroot\Common\ArrayUtils;
 use Override;
 use Traversable;
 
@@ -18,7 +19,7 @@ abstract class AbstractCollection implements Collection
     #[Override]
     public function isEmpty(): bool
     {
-        return empty($this->elements);
+        return ArrayUtils::isEmpty($this->elements);
     }
 
     /** @return T[] */

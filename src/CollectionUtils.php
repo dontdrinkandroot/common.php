@@ -38,7 +38,10 @@ class CollectionUtils
     {
         $results = [];
         foreach ($collection as $element) {
-            /** @var T[P] $element */
+            /**
+             * @var T[P] $element
+             * @phpstan-ignore property.dynamicName
+             */
             $element = $element->{$propertyName};
             $results[] = $element;
         }
@@ -85,6 +88,7 @@ class CollectionUtils
     ): array {
         $results = [];
         foreach ($collection as $element) {
+            /** @phpstan-ignore property.dynamicName */
             $hashKey = $element->{$propertyName};
             if (!is_string($hashKey) && !is_int($hashKey)) {
                 throw new Exception(((string)$hashKey) . ' is not a valid array-key');

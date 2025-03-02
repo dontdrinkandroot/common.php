@@ -19,13 +19,13 @@ class CollectionUtilsTest extends TestCase
             $collection,
             fn(SimplePopo $simplePopo): string => $simplePopo->getStringProperty()
         );
-        $this->assertEquals(['a', 'c', 'b'], $result);
+        self::assertEquals(['a', 'c', 'b'], $result);
 
         $result = CollectionUtils::collect(
             $collection,
             fn(SimplePopo $simplePopo): int => $simplePopo->getIntProperty()
         );
-        $this->assertEquals([1, 3, 2], $result);
+        self::assertEquals([1, 3, 2], $result);
     }
 
     public function testCollectProperty(): void
@@ -36,7 +36,7 @@ class CollectionUtilsTest extends TestCase
         $collection[] = new SimplePopo('b', 2);
 
         $result = CollectionUtils::collectProperty($collection, 'stringProperty');
-        $this->assertEquals(['a', 'c', 'b'], $result);
+        self::assertEquals(['a', 'c', 'b'], $result);
     }
 
     public function testHash(): void
@@ -50,9 +50,9 @@ class CollectionUtilsTest extends TestCase
         $collection[] = $element3;
 
         $result = CollectionUtils::hash($collection, fn(SimplePopo $simplePopo): int => $simplePopo->intProperty);
-        $this->assertEquals($result[1], $element1);
-        $this->assertEquals($result[2], $element3);
-        $this->assertEquals($result[3], $element2);
+        self::assertEquals($result[1], $element1);
+        self::assertEquals($result[2], $element3);
+        self::assertEquals($result[3], $element2);
     }
 
     public function testHashByProperty(): void
@@ -66,15 +66,15 @@ class CollectionUtilsTest extends TestCase
         $collection[] = $element3;
 
         $result = CollectionUtils::hashByProperty($collection, 'intProperty');
-        $this->assertEquals($result[1], $element1);
-        $this->assertEquals($result[2], $element3);
-        $this->assertEquals($result[3], $element2);
+        self::assertEquals($result[1], $element1);
+        self::assertEquals($result[2], $element3);
+        self::assertEquals($result[3], $element2);
     }
 
     public function testHashByKey(): void
     {
         $results = CollectionUtils::hashByKey([['key' => 'a'], ['key' => 'b'],], 'key');
-        $this->assertEquals(['a' => ['key' => 'a'], 'b' => ['key' => 'b']], $results);
+        self::assertEquals(['a' => ['key' => 'a'], 'b' => ['key' => 'b']], $results);
     }
 
     public function testHashByKeyWithDuplicate(): void
@@ -90,7 +90,7 @@ class CollectionUtilsTest extends TestCase
             ['key' => 'b', 'value' => 2],
             ['key' => 'a', 'value' => 3],
         ], 'key', true);
-        $this->assertEquals(
+        self::assertEquals(
             [
                 'a' => ['key' => 'a', 'value' => 3],
                 'b' => ['key' => 'b', 'value' => 2],

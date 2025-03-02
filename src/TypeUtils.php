@@ -10,7 +10,10 @@ class TypeUtils
     public static function integerOrNull(mixed $value): ?int
     {
         $intVal = (int)$value;
-        if (is_object($value)
+
+        if (
+            is_object($value)
+            /** @phpstan-ignore notEqual.notAllowed */
             || (string)$intVal != $value
             || is_bool($value)
             || is_null($value)
