@@ -283,6 +283,7 @@ class RedundantAssert implements Rule
                 if (
                     $firstArgType->isNull()->no()
                     && $firstArgType->isObject()->yes()
+                    && 0 < count($firstArgType->getObjectClassNames())
                     /** @phpstan-ignore method.notFound */
                     && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()
                 ) {
@@ -311,6 +312,7 @@ class RedundantAssert implements Rule
                     $firstArgType->isNull()->yes()
                     || (
                         $firstArgType->isObject()->yes()
+                        && 0 < count($firstArgType->getObjectClassNames())
                         /** @phpstan-ignore method.notFound */
                         && $firstArgType->isInstanceOf($secondArgValueClass->name)->yes()
                     )
