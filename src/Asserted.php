@@ -63,6 +63,19 @@ class Asserted
     }
 
     /**
+     * @return non-empty-string|null
+     * @phpstan-assert non-empty-string|null $value
+     */
+    public static function nonEmptyStringOrNull(mixed $value, ?string $message = null): ?string
+    {
+        if (null === $value) {
+            return null;
+        }
+
+        return self::nonEmptyString($value, $message);
+    }
+
+    /**
      * @phpstan-assert int $value
      */
     public static function int(mixed $value, ?string $message = null): int

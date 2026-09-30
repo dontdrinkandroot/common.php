@@ -29,7 +29,6 @@ class Random
         if ($minLength > $maxLength) {
             throw new InvalidArgumentException('Min length must be less than or equal to max length');
         }
-        /** @phpstan-ignore argument.type */
         $targetLength = random_int($minLength, $maxLength);
         for ($i = 0; $i < $targetLength; $i++) {
             $randomString .= mb_substr($characters, random_int(0, $charactersLength - 1), 1);

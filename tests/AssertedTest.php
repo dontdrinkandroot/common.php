@@ -121,6 +121,19 @@ class AssertedTest extends TestCase
         Asserted::nonEmptyString('');
     }
 
+    public function testNonEmptyStringOrNullWithValidValues(): void
+    {
+        self::assertEquals('test', Asserted::nonEmptyStringOrNull('test'));
+        self::assertEquals(' ', Asserted::nonEmptyStringOrNull(' '));
+        self::assertNull(Asserted::nonEmptyStringOrNull(null));
+    }
+
+    public function testNonEmptyStringOrNullWithEmptyString(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        Asserted::nonEmptyStringOrNull('');
+    }
+
     public function testStringOrNull(): void
     {
         /** @phpstan-ignore ddrCommon.redundantAssert */

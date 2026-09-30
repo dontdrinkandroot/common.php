@@ -1,5 +1,5 @@
 /vendor/
 /composer.lock
-/.phpunit.result.cache
-/log.junit.xml
 /.idea/
+/.phpunit.result.cache
+/crap4j.xml
