@@ -1,0 +1,14 @@
+{
+    "validate": {
+        "command": "bin/validate",
+        "description": "Run full validation: phpunit, phpstan, crap analysis"
+    },
+    "phpunit": {
+        "command": "vendor/bin/phpunit [args]",
+        "description": "Run phpunit with optional args"
+    },
+    "phpstan": {
+        "command": "vendor/bin/phpstan [args]",
+        "description": "Run phpstan with optional args"
+    }
+}

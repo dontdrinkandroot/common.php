@@ -62,6 +62,16 @@ class InstantTest extends TestCase
         self::assertEquals(123456789, DateUtils::toMillis($dateTime));
     }
 
+    public function testGetDateTimePreservesMillis(): void
+    {
+        $instant = Instant::fromTimestamp(1794940406006);
+
+        $dateTime = $instant->getDateTime();
+
+        self::assertSame('1794940406.006', $dateTime->format('U.v'));
+        self::assertSame(1794940406006, DateUtils::toMillis($dateTime));
+    }
+
     public function testGetUnixTimestamp(): void
     {
         $instant = Instant::fromTimestamp(123456789);
