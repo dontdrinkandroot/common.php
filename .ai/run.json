@@ -10,5 +10,13 @@
     "phpstan": {
         "command": "vendor/bin/phpstan [args]",
         "description": "Run phpstan with optional args"
+    },
+    "composer": {
+        "command": "composer [args]",
+        "description": "Run composer with optional args"
+    },
+    "git": {
+        "command": "git [args]",
+        "description": "Run git with optional args"
     }
 }

@@ -12,11 +12,11 @@ class TypeUtils
         $intVal = (int)$value;
 
         if (
-            is_object($value)
+            is_null($value)
+            || is_object($value)
             /** @phpstan-ignore notEqual.notAllowed */
             || (string)$intVal != $value
             || is_bool($value)
-            || is_null($value)
         ) {
             return null;
         }
